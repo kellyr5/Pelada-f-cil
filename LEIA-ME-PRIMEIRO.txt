@@ -1,0 +1,74 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║         ⚽ PELADA FÁCIL - COMO VER O SITE ⚽                  ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📍 VOCÊ ESTÁ AQUI: /home/user/Pelada-f-cil
+
+
+═══════════════════════════════════════════════════════════════
+  🎯 MÉTODO 1: SUPER RÁPIDO (RECOMENDADO)
+═══════════════════════════════════════════════════════════════
+
+1️⃣  Abra esta pasta no seu computador
+2️⃣  Dê duplo clique no arquivo: index.html
+3️⃣  PRONTO! O site abre no navegador!
+
+⚠️  Se o CSS não carregar, use o Método 2
+
+
+═══════════════════════════════════════════════════════════════
+  🚀 MÉTODO 2: SERVIDOR LOCAL (MELHOR)
+═══════════════════════════════════════════════════════════════
+
+WINDOWS:
+1️⃣  Dê duplo clique no arquivo: start.bat
+2️⃣  Abra seu navegador
+3️⃣  Digite: localhost:8000
+
+LINUX/MAC:
+1️⃣  Abra o Terminal
+2️⃣  Digite: cd /home/user/Pelada-f-cil
+3️⃣  Digite: ./start.sh
+4️⃣  Abra seu navegador
+5️⃣  Digite: localhost:8000
+
+
+═══════════════════════════════════════════════════════════════
+  💻 MÉTODO 3: USANDO VS CODE
+═══════════════════════════════════════════════════════════════
+
+1️⃣  Abra o VS Code
+2️⃣  File → Open Folder → Selecione: Pelada-f-cil
+3️⃣  Instale extensão "Live Server"
+4️⃣  Clique direito em index.html
+5️⃣  Selecione: "Open with Live Server"
+
+
+═══════════════════════════════════════════════════════════════
+  ❓ PROBLEMAS?
+═══════════════════════════════════════════════════════════════
+
+📖 Leia o arquivo: COMO-EXECUTAR.md
+   (tem instruções detalhadas para todos os casos)
+
+
+═══════════════════════════════════════════════════════════════
+  ✅ O QUE VOCÊ DEVE VER
+═══════════════════════════════════════════════════════════════
+
+✓ Fundo escuro (preto/azul escuro)
+✓ Logo "⚽ Pelada Fácil" no topo (verde)
+✓ Título grande: "A Revolução do Esporte Amador"
+✓ Botões verdes que brilham ao passar o mouse
+✓ Cards animados flutuando
+✓ Menu que funciona
+✓ Formulário de cadastro no final
+
+
+═══════════════════════════════════════════════════════════════
+
+🎉 Aproveite o site! Qualquer dúvida, me avise!
+
+═══════════════════════════════════════════════════════════════
