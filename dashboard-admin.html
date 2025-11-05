@@ -9,73 +9,74 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="dashboard-body">
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="sidebar__header">
             <div class="sidebar__logo">
-                <span class="logo-icon">⚽</span>
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
                 <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
             </div>
-            <div class="sidebar__badge sidebar__badge--admin">Super Admin 👑</div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
         </div>
 
         <nav class="sidebar__nav">
             <a href="#" class="sidebar__link active">
-                <span class="sidebar__icon">🏠</span>
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
                 <span>Dashboard</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">✅</span>
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
                 <span>Aprovações</span>
-                <span class="sidebar__badge-small">12</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">🏟️</span>
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
                 <span>Quadras</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">👥</span>
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
                 <span>Usuários</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">🎮</span>
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
                 <span>Partidas</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">💰</span>
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
                 <span>Financeiro</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">📊</span>
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
                 <span>Relatórios</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">🚨</span>
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
                 <span>Denúncias</span>
                 <span class="sidebar__badge-small">3</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">📢</span>
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
                 <span>Notificações</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">⚙️</span>
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
                 <span>Configurações</span>
             </a>
         </nav>
 
         <div class="sidebar__footer">
             <div class="sidebar__user">
-                <div class="user-avatar">👑</div>
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
                 <div class="user-info">
                     <div class="user-name">Admin Master</div>
                     <div class="user-rating">Acesso Total</div>
                 </div>
             </div>
             <a href="index.html" class="sidebar__link sidebar__link--logout">
-                <span class="sidebar__icon">🚪</span>
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
                 <span>Sair</span>
             </a>
         </div>
@@ -91,15 +92,15 @@
                     <span></span>
                     <span></span>
                 </button>
-                <h1 class="topbar__title">Painel Administrativo 👑</h1>
+                <h1 class="topbar__title">Painel Administrativo <i class="fas fa-crown"></i></h1>
             </div>
             <div class="topbar__right">
                 <button class="topbar__btn">
-                    <span class="topbar__icon">🔔</span>
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
                     <span class="topbar__badge">15</span>
                 </button>
                 <button class="topbar__btn">
-                    <span class="topbar__icon">⚠️</span>
+                    <span class="topbar__icon"><i class="fas fa-exclamation-triangle"></i></span>
                     <span class="topbar__badge">3</span>
                 </button>
             </div>
@@ -110,35 +111,35 @@
             <!-- Stats Overview -->
             <div class="stats-grid stats-grid--four">
                 <div class="stat-card stat-card--green">
-                    <div class="stat-card__icon">👥</div>
+                    <div class="stat-card__icon"><i class="fas fa-users"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">24.567</div>
                         <div class="stat-card__label">Usuários Ativos</div>
-                        <div class="stat-card__trend stat-card__trend--up">↑ 1.234 este mês</div>
+                        <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 1.234 este mês</div>
                     </div>
                 </div>
                 <div class="stat-card stat-card--blue">
-                    <div class="stat-card__icon">🏟️</div>
+                    <div class="stat-card__icon"><i class="fas fa-building"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">486</div>
                         <div class="stat-card__label">Quadras Cadastradas</div>
-                        <div class="stat-card__trend stat-card__trend--up">↑ 28 este mês</div>
+                        <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 28 este mês</div>
                     </div>
                 </div>
                 <div class="stat-card stat-card--orange">
-                    <div class="stat-card__icon">⚽</div>
+                    <div class="stat-card__icon"><i class="fas fa-futbol"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">1.892</div>
                         <div class="stat-card__label">Partidas (Mês)</div>
-                        <div class="stat-card__trend stat-card__trend--up">↑ 15% vs anterior</div>
+                        <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 15% vs anterior</div>
                     </div>
                 </div>
                 <div class="stat-card stat-card--purple">
-                    <div class="stat-card__icon">💰</div>
+                    <div class="stat-card__icon"><i class="fas fa-dollar-sign"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">R$ 189K</div>
                         <div class="stat-card__label">Receita (Mês)</div>
-                        <div class="stat-card__trend stat-card__trend--up">↑ R$ 24K vs anterior</div>
+                        <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> R$ 24K vs anterior</div>
                     </div>
                 </div>
             </div>
@@ -146,88 +147,88 @@
             <!-- Pending Approvals -->
             <section class="section-card section-card--alert">
                 <div class="section-card__header">
-                    <h2>⏳ Aguardando Aprovação (12)</h2>
+                    <h2><i class="fas fa-hourglass-half"></i> Aguardando Aprovação (12)</h2>
                     <button class="btn btn--secondary btn--sm">Ver Todos</button>
                 </div>
                 <div class="approval-grid">
                     <!-- Court Approval 1 -->
-                    <div class="approval-card">
+                    <div class="approval-card" data-id="quadra-1">
                         <div class="approval-header">
                             <div class="approval-badge approval-badge--new">Nova Quadra</div>
-                            <div class="approval-type">🏟️</div>
+                            <div class="approval-type"><i class="fas fa-building"></i></div>
                         </div>
                         <div class="approval-content">
                             <h3>Arena Champions League</h3>
-                            <p class="approval-location">📍 Moema, São Paulo - SP</p>
+                            <p class="approval-location"><i class="fas fa-map-marker-alt"></i> Moema, São Paulo - SP</p>
                             <div class="approval-info">
-                                <span>👤 Roberto Silva</span>
-                                <span>📅 Há 2 horas</span>
+                                <span><i class="fas fa-user"></i> Roberto Silva</span>
+                                <span><i class="fas fa-clock"></i> Há 2 horas</span>
                             </div>
                             <div class="approval-features">
-                                <span class="feature-tag">⚽ Futebol</span>
-                                <span class="feature-tag">💡 Iluminação</span>
-                                <span class="feature-tag">🚿 Vestiário</span>
+                                <span class="feature-tag"><i class="fas fa-futbol"></i> Futebol</span>
+                                <span class="feature-tag"><i class="fas fa-lightbulb"></i> Iluminação</span>
+                                <span class="feature-tag"><i class="fas fa-shower"></i> Vestiário</span>
                             </div>
-                            <p class="approval-price">💰 R$ 180/hora</p>
+                            <p class="approval-price"><i class="fas fa-dollar-sign"></i> R$ 180/hora</p>
                         </div>
                         <div class="approval-actions">
-                            <button class="btn btn--success btn--sm">✓ Aprovar</button>
-                            <button class="btn btn--secondary btn--sm">👁️ Detalhes</button>
-                            <button class="btn btn--danger btn--sm">✗ Rejeitar</button>
+                            <button class="btn btn--success btn--sm" onclick="aprovarQuadra('quadra-1', 'Arena Champions League')"><i class="fas fa-check"></i> Aprovar</button>
+                            <button class="btn btn--secondary btn--sm" onclick="verDetalhesQuadra('quadra-1', 'Arena Champions League')"><i class="fas fa-eye"></i> Detalhes</button>
+                            <button class="btn btn--danger btn--sm" onclick="rejeitarQuadra('quadra-1', 'Arena Champions League')"><i class="fas fa-times"></i> Rejeitar</button>
                         </div>
                     </div>
 
                     <!-- Court Approval 2 -->
-                    <div class="approval-card">
+                    <div class="approval-card" data-id="quadra-2">
                         <div class="approval-header">
                             <div class="approval-badge approval-badge--new">Nova Quadra</div>
-                            <div class="approval-type">🏐</div>
+                            <div class="approval-type"><i class="fas fa-volleyball-ball"></i></div>
                         </div>
                         <div class="approval-content">
                             <h3>Beach Vôlei Paradise</h3>
-                            <p class="approval-location">📍 Vila Olímpia, São Paulo - SP</p>
+                            <p class="approval-location"><i class="fas fa-map-marker-alt"></i> Vila Olímpia, São Paulo - SP</p>
                             <div class="approval-info">
-                                <span>👤 Ana Paula</span>
-                                <span>📅 Há 5 horas</span>
+                                <span><i class="fas fa-user"></i> Ana Paula</span>
+                                <span><i class="fas fa-clock"></i> Há 5 horas</span>
                             </div>
                             <div class="approval-features">
-                                <span class="feature-tag">🏐 Vôlei</span>
-                                <span class="feature-tag">🏖️ Areia</span>
-                                <span class="feature-tag">🌅 Vista</span>
+                                <span class="feature-tag"><i class="fas fa-volleyball-ball"></i> Vôlei</span>
+                                <span class="feature-tag"><i class="fas fa-umbrella-beach"></i> Areia</span>
+                                <span class="feature-tag"><i class="fas fa-mountain"></i> Vista</span>
                             </div>
-                            <p class="approval-price">💰 R$ 120/hora</p>
+                            <p class="approval-price"><i class="fas fa-dollar-sign"></i> R$ 120/hora</p>
                         </div>
                         <div class="approval-actions">
-                            <button class="btn btn--success btn--sm">✓ Aprovar</button>
-                            <button class="btn btn--secondary btn--sm">👁️ Detalhes</button>
-                            <button class="btn btn--danger btn--sm">✗ Rejeitar</button>
+                            <button class="btn btn--success btn--sm" onclick="aprovarQuadra('quadra-2', 'Beach Vôlei Paradise')"><i class="fas fa-check"></i> Aprovar</button>
+                            <button class="btn btn--secondary btn--sm" onclick="verDetalhesQuadra('quadra-2', 'Beach Vôlei Paradise')"><i class="fas fa-eye"></i> Detalhes</button>
+                            <button class="btn btn--danger btn--sm" onclick="rejeitarQuadra('quadra-2', 'Beach Vôlei Paradise')"><i class="fas fa-times"></i> Rejeitar</button>
                         </div>
                     </div>
 
                     <!-- Court Approval 3 -->
-                    <div class="approval-card">
+                    <div class="approval-card" data-id="quadra-3">
                         <div class="approval-header">
                             <div class="approval-badge approval-badge--update">Atualização</div>
-                            <div class="approval-type">🎾</div>
+                            <div class="approval-type"><i class="fas fa-table-tennis"></i></div>
                         </div>
                         <div class="approval-content">
                             <h3>Tennis Club Premium</h3>
-                            <p class="approval-location">📍 Jardins, São Paulo - SP</p>
+                            <p class="approval-location"><i class="fas fa-map-marker-alt"></i> Jardins, São Paulo - SP</p>
                             <div class="approval-info">
-                                <span>👤 Carlos Mendes</span>
-                                <span>📅 Há 1 dia</span>
+                                <span><i class="fas fa-user"></i> Carlos Mendes</span>
+                                <span><i class="fas fa-clock"></i> Há 1 dia</span>
                             </div>
                             <div class="approval-features">
-                                <span class="feature-tag">🎾 Tênis</span>
-                                <span class="feature-tag">🏓 Padel</span>
-                                <span class="feature-tag">🌟 Premium</span>
+                                <span class="feature-tag"><i class="fas fa-table-tennis"></i> Tênis</span>
+                                <span class="feature-tag"><i class="fas fa-hockey-puck"></i> Padel</span>
+                                <span class="feature-tag"><i class="fas fa-star"></i> Premium</span>
                             </div>
-                            <p class="approval-price">💰 R$ 250/hora</p>
+                            <p class="approval-price"><i class="fas fa-dollar-sign"></i> R$ 250/hora</p>
                         </div>
                         <div class="approval-actions">
-                            <button class="btn btn--success btn--sm">✓ Aprovar</button>
-                            <button class="btn btn--secondary btn--sm">👁️ Detalhes</button>
-                            <button class="btn btn--danger btn--sm">✗ Rejeitar</button>
+                            <button class="btn btn--success btn--sm" onclick="aprovarQuadra('quadra-3', 'Tennis Club Premium')"><i class="fas fa-check"></i> Aprovar</button>
+                            <button class="btn btn--secondary btn--sm" onclick="verDetalhesQuadra('quadra-3', 'Tennis Club Premium')"><i class="fas fa-eye"></i> Detalhes</button>
+                            <button class="btn btn--danger btn--sm" onclick="rejeitarQuadra('quadra-3', 'Tennis Club Premium')"><i class="fas fa-times"></i> Rejeitar</button>
                         </div>
                     </div>
                 </div>
@@ -237,39 +238,39 @@
             <div class="grid-2-columns">
                 <section class="section-card">
                     <div class="section-card__header">
-                        <h2>Atividade Recente 📊</h2>
+                        <h2>Atividade Recente <i class="fas fa-chart-bar"></i></h2>
                     </div>
                     <div class="activity-list">
                         <div class="activity-item">
-                            <div class="activity-icon activity-icon--success">✓</div>
+                            <div class="activity-icon activity-icon--success"><i class="fas fa-check"></i></div>
                             <div class="activity-content">
                                 <p><strong>Arena Sport Center</strong> foi aprovada</p>
                                 <span class="activity-time">Há 10 minutos</span>
                             </div>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon activity-icon--info">👤</div>
+                            <div class="activity-icon activity-icon--info"><i class="fas fa-user-plus"></i></div>
                             <div class="activity-content">
                                 <p><strong>João Silva</strong> criou uma nova conta</p>
                                 <span class="activity-time">Há 25 minutos</span>
                             </div>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon activity-icon--warning">⚠️</div>
+                            <div class="activity-icon activity-icon--warning"><i class="fas fa-exclamation-triangle"></i></div>
                             <div class="activity-content">
                                 <p><strong>Denúncia</strong> recebida sobre Quadra XYZ</p>
                                 <span class="activity-time">Há 1 hora</span>
                             </div>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon activity-icon--success">💰</div>
+                            <div class="activity-icon activity-icon--success"><i class="fas fa-dollar-sign"></i></div>
                             <div class="activity-content">
                                 <p><strong>Pagamento</strong> de R$ 150 processado</p>
                                 <span class="activity-time">Há 2 horas</span>
                             </div>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-icon activity-icon--info">🏟️</div>
+                            <div class="activity-icon activity-icon--info"><i class="fas fa-building"></i></div>
                             <div class="activity-content">
                                 <p><strong>Beach Vôlei Paradise</strong> solicitou aprovação</p>
                                 <span class="activity-time">Há 5 horas</span>
@@ -280,34 +281,34 @@
 
                 <section class="section-card">
                     <div class="section-card__header">
-                        <h2>Denúncias Abertas 🚨</h2>
+                        <h2>Denúncias Abertas <i class="fas fa-flag"></i></h2>
                     </div>
                     <div class="reports-list">
                         <div class="report-item report-item--high">
                             <div class="report-header">
-                                <div class="report-priority">🔴 Alta</div>
+                                <div class="report-priority"><i class="fas fa-circle" style="color: #ff1744;"></i> Alta</div>
                                 <div class="report-time">Há 30min</div>
                             </div>
                             <h4>Quadra em péssimas condições</h4>
-                            <p>📍 Arena Sport City • 👤 3 denúncias</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Arena Sport City • <i class="fas fa-users"></i> 3 denúncias</p>
                             <button class="btn btn--sm btn--danger">Investigar</button>
                         </div>
                         <div class="report-item report-item--medium">
                             <div class="report-header">
-                                <div class="report-priority">🟡 Média</div>
+                                <div class="report-priority"><i class="fas fa-circle" style="color: #ffd600;"></i> Média</div>
                                 <div class="report-time">Há 2h</div>
                             </div>
                             <h4>Comportamento inadequado</h4>
-                            <p>👤 Usuário: Carlos M. • 👤 1 denúncia</p>
+                            <p><i class="fas fa-user"></i> Usuário: Carlos M. • <i class="fas fa-flag"></i> 1 denúncia</p>
                             <button class="btn btn--sm btn--warning">Analisar</button>
                         </div>
                         <div class="report-item report-item--low">
                             <div class="report-header">
-                                <div class="report-priority">🟢 Baixa</div>
+                                <div class="report-priority"><i class="fas fa-circle" style="color: #00c853;"></i> Baixa</div>
                                 <div class="report-time">Há 1 dia</div>
                             </div>
                             <h4>Horário não respeitado</h4>
-                            <p>📍 Quadra Municipal • 👤 1 denúncia</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Quadra Municipal • <i class="fas fa-flag"></i> 1 denúncia</p>
                             <button class="btn btn--sm btn--secondary">Revisar</button>
                         </div>
                     </div>
@@ -317,7 +318,7 @@
             <!-- Courts Management -->
             <section class="section-card">
                 <div class="section-card__header">
-                    <h2>Quadras Mais Populares 🔥</h2>
+                    <h2>Quadras Mais Populares <i class="fas fa-fire"></i></h2>
                     <a href="#" class="btn btn--secondary btn--sm">Ver todas</a>
                 </div>
                 <div class="table-responsive">
@@ -337,61 +338,61 @@
                             <tr>
                                 <td>
                                     <div class="table-court">
-                                        <div class="table-icon">🏟️</div>
+                                        <div class="table-icon"><i class="fas fa-building"></i></div>
                                         <div>
                                             <div class="table-name">Arena Sport Center</div>
-                                            <div class="table-meta">⚽ Futebol/Futsal</div>
+                                            <div class="table-meta"><i class="fas fa-futbol"></i> Futebol/Futsal</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>Vila Mariana, SP</td>
                                 <td>86 reservas</td>
                                 <td>R$ 12.450</td>
-                                <td>⭐ 4.9 (248)</td>
-                                <td><span class="badge badge--success">✓ Ativa</span></td>
+                                <td><i class="fas fa-star" style="color: #ffd600;"></i> 4.9 (248)</td>
+                                <td><span class="badge badge--success"><i class="fas fa-check"></i> Ativa</span></td>
                                 <td>
-                                    <button class="btn-icon" title="Ver">👁️</button>
-                                    <button class="btn-icon" title="Editar">✏️</button>
+                                    <button class="btn-icon" title="Ver"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Editar"><i class="fas fa-edit"></i></button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="table-court">
-                                        <div class="table-icon">🏐</div>
+                                        <div class="table-icon"><i class="fas fa-volleyball-ball"></i></div>
                                         <div>
                                             <div class="table-name">Beach Vôlei Pro</div>
-                                            <div class="table-meta">🏐 Vôlei</div>
+                                            <div class="table-meta"><i class="fas fa-volleyball-ball"></i> Vôlei</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>Pinheiros, SP</td>
                                 <td>72 reservas</td>
                                 <td>R$ 8.640</td>
-                                <td>⭐ 4.7 (156)</td>
-                                <td><span class="badge badge--success">✓ Ativa</span></td>
+                                <td><i class="fas fa-star" style="color: #ffd600;"></i> 4.7 (156)</td>
+                                <td><span class="badge badge--success"><i class="fas fa-check"></i> Ativa</span></td>
                                 <td>
-                                    <button class="btn-icon" title="Ver">👁️</button>
-                                    <button class="btn-icon" title="Editar">✏️</button>
+                                    <button class="btn-icon" title="Ver"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Editar"><i class="fas fa-edit"></i></button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="table-court">
-                                        <div class="table-icon">🏀</div>
+                                        <div class="table-icon"><i class="fas fa-basketball-ball"></i></div>
                                         <div>
                                             <div class="table-name">Street Basketball</div>
-                                            <div class="table-meta">🏀 Basquete</div>
+                                            <div class="table-meta"><i class="fas fa-basketball-ball"></i> Basquete</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>Mooca, SP</td>
                                 <td>64 reservas</td>
                                 <td>Gratuita</td>
-                                <td>⭐ 4.6 (98)</td>
-                                <td><span class="badge badge--success">✓ Ativa</span></td>
+                                <td><i class="fas fa-star" style="color: #ffd600;"></i> 4.6 (98)</td>
+                                <td><span class="badge badge--success"><i class="fas fa-check"></i> Ativa</span></td>
                                 <td>
-                                    <button class="btn-icon" title="Ver">👁️</button>
-                                    <button class="btn-icon" title="Editar">✏️</button>
+                                    <button class="btn-icon" title="Ver"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Editar"><i class="fas fa-edit"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -402,79 +403,79 @@
             <!-- Users Management -->
             <section class="section-card">
                 <div class="section-card__header">
-                    <h2>Novos Usuários 👥</h2>
+                    <h2>Novos Usuários <i class="fas fa-users"></i></h2>
                     <a href="#" class="btn btn--secondary btn--sm">Gerenciar usuários</a>
                 </div>
                 <div class="users-grid">
                     <div class="user-card">
-                        <div class="user-card__avatar">👤</div>
+                        <div class="user-card__avatar"><i class="fas fa-user-circle"></i></div>
                         <div class="user-card__info">
                             <h4>João Silva</h4>
                             <p>joao@email.com</p>
                             <span class="badge badge--info">Jogador</span>
                         </div>
                         <div class="user-card__stats">
-                            <div>⚽ 12 partidas</div>
-                            <div>⭐ 4.8</div>
+                            <div><i class="fas fa-futbol"></i> 12 partidas</div>
+                            <div><i class="fas fa-star" style="color: #ffd600;"></i> 4.8</div>
                         </div>
                         <div class="user-card__actions">
-                            <button class="btn-icon" title="Ver perfil">👁️</button>
-                            <button class="btn-icon" title="Mensagem">💬</button>
-                            <button class="btn-icon" title="Bloquear">🚫</button>
+                            <button class="btn-icon" title="Ver perfil" onclick="gerenciarUsuario('user-1', 'João Silva', 'joao@email.com')"><i class="fas fa-eye"></i></button>
+                            <button class="btn-icon" title="Mensagem" onclick="enviarMensagem('joao@email.com')"><i class="fas fa-comment"></i></button>
+                            <button class="btn-icon" title="Bloquear" onclick="bloquearUsuario('user-1', 'João Silva')"><i class="fas fa-ban"></i></button>
                         </div>
                     </div>
 
                     <div class="user-card">
-                        <div class="user-card__avatar">👩</div>
+                        <div class="user-card__avatar"><i class="fas fa-user-circle"></i></div>
                         <div class="user-card__info">
                             <h4>Ana Paula</h4>
                             <p>ana@email.com</p>
                             <span class="badge badge--warning">Dono Quadra</span>
                         </div>
                         <div class="user-card__stats">
-                            <div>🏟️ 1 quadra</div>
-                            <div>⭐ 4.9</div>
+                            <div><i class="fas fa-building"></i> 1 quadra</div>
+                            <div><i class="fas fa-star" style="color: #ffd600;"></i> 4.9</div>
                         </div>
                         <div class="user-card__actions">
-                            <button class="btn-icon" title="Ver perfil">👁️</button>
-                            <button class="btn-icon" title="Mensagem">💬</button>
-                            <button class="btn-icon" title="Bloquear">🚫</button>
+                            <button class="btn-icon" title="Ver perfil" onclick="gerenciarUsuario('user-2', 'Ana Paula', 'ana@email.com')"><i class="fas fa-eye"></i></button>
+                            <button class="btn-icon" title="Mensagem" onclick="enviarMensagem('ana@email.com')"><i class="fas fa-comment"></i></button>
+                            <button class="btn-icon" title="Bloquear" onclick="bloquearUsuario('user-2', 'Ana Paula')"><i class="fas fa-ban"></i></button>
                         </div>
                     </div>
 
                     <div class="user-card">
-                        <div class="user-card__avatar">🧔</div>
+                        <div class="user-card__avatar"><i class="fas fa-user-circle"></i></div>
                         <div class="user-card__info">
                             <h4>Carlos Mendes</h4>
                             <p>carlos@email.com</p>
                             <span class="badge badge--info">Jogador</span>
                         </div>
                         <div class="user-card__stats">
-                            <div>⚽ 8 partidas</div>
-                            <div>⭐ 4.7</div>
+                            <div><i class="fas fa-futbol"></i> 8 partidas</div>
+                            <div><i class="fas fa-star" style="color: #ffd600;"></i> 4.7</div>
                         </div>
                         <div class="user-card__actions">
-                            <button class="btn-icon" title="Ver perfil">👁️</button>
-                            <button class="btn-icon" title="Mensagem">💬</button>
-                            <button class="btn-icon" title="Bloquear">🚫</button>
+                            <button class="btn-icon" title="Ver perfil" onclick="gerenciarUsuario('user-3', 'Carlos Mendes', 'carlos@email.com')"><i class="fas fa-eye"></i></button>
+                            <button class="btn-icon" title="Mensagem" onclick="enviarMensagem('carlos@email.com')"><i class="fas fa-comment"></i></button>
+                            <button class="btn-icon" title="Bloquear" onclick="bloquearUsuario('user-3', 'Carlos Mendes')"><i class="fas fa-ban"></i></button>
                         </div>
                     </div>
 
                     <div class="user-card">
-                        <div class="user-card__avatar">👨</div>
+                        <div class="user-card__avatar"><i class="fas fa-user-circle"></i></div>
                         <div class="user-card__info">
                             <h4>Roberto Lima</h4>
                             <p>roberto@email.com</p>
                             <span class="badge badge--success">Organizador</span>
                         </div>
                         <div class="user-card__stats">
-                            <div>🏆 3 torneios</div>
-                            <div>⭐ 5.0</div>
+                            <div><i class="fas fa-trophy"></i> 3 torneios</div>
+                            <div><i class="fas fa-star" style="color: #ffd600;"></i> 5.0</div>
                         </div>
                         <div class="user-card__actions">
-                            <button class="btn-icon" title="Ver perfil">👁️</button>
-                            <button class="btn-icon" title="Mensagem">💬</button>
-                            <button class="btn-icon" title="Bloquear">🚫</button>
+                            <button class="btn-icon" title="Ver perfil" onclick="gerenciarUsuario('user-4', 'Roberto Lima', 'roberto@email.com')"><i class="fas fa-eye"></i></button>
+                            <button class="btn-icon" title="Mensagem" onclick="enviarMensagem('roberto@email.com')"><i class="fas fa-comment"></i></button>
+                            <button class="btn-icon" title="Bloquear" onclick="bloquearUsuario('user-4', 'Roberto Lima')"><i class="fas fa-ban"></i></button>
                         </div>
                     </div>
                 </div>
@@ -482,6 +483,7 @@
         </div>
     </main>
 
+    <script src="js/funcionalidades.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
 </html>

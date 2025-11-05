@@ -9,13 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="dashboard-body">
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="sidebar__header">
             <div class="sidebar__logo">
-                <span class="logo-icon">⚽</span>
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
                 <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
             </div>
             <div class="sidebar__badge">Dono de Quadra</div>
@@ -23,50 +24,50 @@
 
         <nav class="sidebar__nav">
             <a href="#" class="sidebar__link active">
-                <span class="sidebar__icon">🏠</span>
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
                 <span>Início</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">🏟️</span>
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
                 <span>Minha Quadra</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">📅</span>
+                <span class="sidebar__icon"><i class="fas fa-calendar"></i></span>
                 <span>Agenda</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">💰</span>
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
                 <span>Financeiro</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">👥</span>
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
                 <span>Clientes</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">📊</span>
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
                 <span>Relatórios</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">💬</span>
+                <span class="sidebar__icon"><i class="fas fa-comment"></i></span>
                 <span>Mensagens</span>
                 <span class="sidebar__badge-small">5</span>
             </a>
             <a href="#" class="sidebar__link">
-                <span class="sidebar__icon">⚙️</span>
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
                 <span>Configurações</span>
             </a>
         </nav>
 
         <div class="sidebar__footer">
             <div class="sidebar__user">
-                <div class="user-avatar">🏢</div>
+                <div class="user-avatar"><i class="fas fa-building"></i></div>
                 <div class="user-info">
                     <div class="user-name">Arena Sport Center</div>
-                    <div class="user-rating">⭐ 4.9 (248 avaliações)</div>
+                    <div class="user-rating"><i class="fas fa-star" style="color: #ffd600;"></i> 4.9 (248 avaliações)</div>
                 </div>
             </div>
             <a href="index.html" class="sidebar__link sidebar__link--logout">
-                <span class="sidebar__icon">🚪</span>
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
                 <span>Sair</span>
             </a>
         </div>
@@ -82,14 +83,14 @@
                     <span></span>
                     <span></span>
                 </button>
-                <h1 class="topbar__title">Painel de Controle 🏟️</h1>
+                <h1 class="topbar__title">Painel de Controle <i class="fas fa-building"></i></h1>
             </div>
             <div class="topbar__right">
                 <button class="topbar__btn">
-                    <span class="topbar__icon">🔔</span>
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
                     <span class="topbar__badge">7</span>
                 </button>
-                <button class="btn btn--primary">+ Adicionar Horário</button>
+                <button class="btn btn--primary" onclick="adicionarHorario()"><i class="fas fa-plus"></i> Adicionar Horário</button>
             </div>
         </header>
 
@@ -98,23 +99,23 @@
             <!-- Stats Cards -->
             <div class="stats-grid">
                 <div class="stat-card stat-card--green">
-                    <div class="stat-card__icon">💰</div>
+                    <div class="stat-card__icon"><i class="fas fa-dollar-sign"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">R$ 12.450</div>
                         <div class="stat-card__label">Receita (Dezembro)</div>
-                        <div class="stat-card__trend stat-card__trend--up">↑ 15% vs mês anterior</div>
+                        <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 15% vs mês anterior</div>
                     </div>
                 </div>
                 <div class="stat-card stat-card--blue">
-                    <div class="stat-card__icon">📅</div>
+                    <div class="stat-card__icon"><i class="fas fa-calendar"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">86</div>
                         <div class="stat-card__label">Reservas este Mês</div>
-                        <div class="stat-card__trend stat-card__trend--up">↑ 22 vs mês anterior</div>
+                        <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 22 vs mês anterior</div>
                     </div>
                 </div>
                 <div class="stat-card stat-card--orange">
-                    <div class="stat-card__icon">⭐</div>
+                    <div class="stat-card__icon"><i class="fas fa-star" style="color: #ffd600;"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">4.9</div>
                         <div class="stat-card__label">Avaliação Média</div>
@@ -122,11 +123,11 @@
                     </div>
                 </div>
                 <div class="stat-card stat-card--purple">
-                    <div class="stat-card__icon">📈</div>
+                    <div class="stat-card__icon"><i class="fas fa-chart-line"></i></div>
                     <div class="stat-card__content">
                         <div class="stat-card__value">92%</div>
                         <div class="stat-card__label">Taxa de Ocupação</div>
-                        <div class="stat-card__trend stat-card__trend--up">↑ 8% vs mês anterior</div>
+                        <div class="stat-card__trend stat-card__trend--up"><i class="fas fa-arrow-up"></i> 8% vs mês anterior</div>
                     </div>
                 </div>
             </div>
@@ -134,23 +135,23 @@
             <!-- Quick Actions -->
             <section class="section-card">
                 <div class="section-card__header">
-                    <h2>Ações Rápidas 🚀</h2>
+                    <h2>Ações Rápidas <i class="fas fa-rocket"></i></h2>
                 </div>
                 <div class="quick-actions-grid">
-                    <button class="quick-action-btn">
-                        <span class="quick-action-icon">📅</span>
+                    <button class="quick-action-btn" onclick="bloquearHorario()">
+                        <span class="quick-action-icon"><i class="fas fa-calendar"></i></span>
                         <span>Bloquear Horário</span>
                     </button>
-                    <button class="quick-action-btn">
-                        <span class="quick-action-icon">💵</span>
+                    <button class="quick-action-btn" onclick="registrarPagamento()">
+                        <span class="quick-action-icon"><i class="fas fa-money-bill"></i></span>
                         <span>Registrar Pagamento</span>
                     </button>
-                    <button class="quick-action-btn">
-                        <span class="quick-action-icon">📸</span>
+                    <button class="quick-action-btn" onclick="adicionarFotos()">
+                        <span class="quick-action-icon"><i class="fas fa-camera"></i></span>
                         <span>Adicionar Fotos</span>
                     </button>
-                    <button class="quick-action-btn">
-                        <span class="quick-action-icon">🎁</span>
+                    <button class="quick-action-btn" onclick="criarPromocao()">
+                        <span class="quick-action-icon"><i class="fas fa-gift"></i></span>
                         <span>Criar Promoção</span>
                     </button>
                 </div>
@@ -159,7 +160,7 @@
             <!-- Today's Schedule -->
             <section class="section-card">
                 <div class="section-card__header">
-                    <h2>Agenda de Hoje 📅</h2>
+                    <h2>Agenda de Hoje <i class="fas fa-calendar"></i></h2>
                     <div class="date-selector">
                         <button class="btn-icon">←</button>
                         <span class="current-date">Sexta, 15 de Dezembro</span>
@@ -171,9 +172,9 @@
                     <div class="schedule-item schedule-item--booked">
                         <div class="schedule-time">08:00 - 09:00</div>
                         <div class="schedule-info">
-                            <h4>⚽ Futebol • Reservado</h4>
-                            <p>👤 João Silva • Pago</p>
-                            <p>💰 R$ 150,00</p>
+                            <h4><i class="fas fa-futbol"></i> Futebol • Reservado</h4>
+                            <p><i class="fas fa-user"></i> João Silva • Pago</p>
+                            <p><i class="fas fa-dollar-sign"></i> R$ 150,00</p>
                         </div>
                         <div class="schedule-actions">
                             <button class="btn btn--sm btn--secondary">Ver Detalhes</button>
@@ -183,7 +184,7 @@
                     <div class="schedule-item schedule-item--available">
                         <div class="schedule-time">09:00 - 10:00</div>
                         <div class="schedule-info">
-                            <h4>✨ Disponível</h4>
+                            <h4><i class="fas fa-sparkles"></i> Disponível</h4>
                             <p>Quadra livre para reserva</p>
                         </div>
                         <div class="schedule-actions">
@@ -194,9 +195,9 @@
                     <div class="schedule-item schedule-item--pending">
                         <div class="schedule-time">10:00 - 11:00</div>
                         <div class="schedule-info">
-                            <h4>🏐 Vôlei • Pendente</h4>
-                            <p>👤 Ana Paula • Aguardando Pagamento</p>
-                            <p>💰 R$ 120,00</p>
+                            <h4><i class="fas fa-volleyball-ball"></i> Vôlei • Pendente</h4>
+                            <p><i class="fas fa-user"></i> Ana Paula • Aguardando Pagamento</p>
+                            <p><i class="fas fa-dollar-sign"></i> R$ 120,00</p>
                         </div>
                         <div class="schedule-actions">
                             <button class="btn btn--sm btn--warning">Confirmar</button>
@@ -206,9 +207,9 @@
                     <div class="schedule-item schedule-item--booked">
                         <div class="schedule-time">11:00 - 12:00</div>
                         <div class="schedule-info">
-                            <h4>⚽ Futsal • Reservado</h4>
-                            <p>👥 Grupo Amigos FC • Pago</p>
-                            <p>💰 R$ 150,00</p>
+                            <h4><i class="fas fa-futbol"></i> Futsal • Reservado</h4>
+                            <p><i class="fas fa-users"></i> Grupo Amigos FC • Pago</p>
+                            <p><i class="fas fa-dollar-sign"></i> R$ 150,00</p>
                         </div>
                         <div class="schedule-actions">
                             <button class="btn btn--sm btn--secondary">Ver Detalhes</button>
@@ -218,7 +219,7 @@
                     <div class="schedule-item schedule-item--blocked">
                         <div class="schedule-time">12:00 - 14:00</div>
                         <div class="schedule-info">
-                            <h4>🔧 Manutenção</h4>
+                            <h4><i class="fas fa-wrench"></i> Manutenção</h4>
                             <p>Horário bloqueado para manutenção</p>
                         </div>
                         <div class="schedule-actions">
@@ -229,7 +230,7 @@
                     <div class="schedule-item schedule-item--available">
                         <div class="schedule-time">14:00 - 15:00</div>
                         <div class="schedule-info">
-                            <h4>✨ Disponível</h4>
+                            <h4><i class="fas fa-sparkles"></i> Disponível</h4>
                             <p>Quadra livre para reserva</p>
                         </div>
                         <div class="schedule-actions">
@@ -242,7 +243,7 @@
             <!-- Recent Bookings -->
             <section class="section-card">
                 <div class="section-card__header">
-                    <h2>Reservas Recentes 📋</h2>
+                    <h2>Reservas Recentes <i class="fas fa-clipboard"></i></h2>
                     <a href="#" class="btn btn--secondary btn--sm">Ver todas</a>
                 </div>
                 <div class="table-responsive">
@@ -261,7 +262,7 @@
                             <tr>
                                 <td>
                                     <div class="table-user">
-                                        <div class="table-avatar">👤</div>
+                                        <div class="table-avatar"><i class="fas fa-user-circle"></i></div>
                                         <div>
                                             <div class="table-name">João Silva</div>
                                             <div class="table-email">joao@email.com</div>
@@ -269,18 +270,18 @@
                                     </div>
                                 </td>
                                 <td>15/12 • 08:00-09:00</td>
-                                <td><span class="badge badge--sport">⚽ Futebol</span></td>
+                                <td><span class="badge badge--sport"><i class="fas fa-futbol"></i> Futebol</span></td>
                                 <td>R$ 150,00</td>
-                                <td><span class="badge badge--success">✓ Pago</span></td>
+                                <td><span class="badge badge--success"><i class="fas fa-check"></i> Pago</span></td>
                                 <td>
-                                    <button class="btn-icon" title="Ver detalhes">👁️</button>
-                                    <button class="btn-icon" title="Mensagem">💬</button>
+                                    <button class="btn-icon" title="Ver detalhes"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Mensagem"><i class="fas fa-comment"></i></button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="table-user">
-                                        <div class="table-avatar">👩</div>
+                                        <div class="table-avatar"><i class="fas fa-user-circle"></i></div>
                                         <div>
                                             <div class="table-name">Ana Paula</div>
                                             <div class="table-email">ana@email.com</div>
@@ -288,18 +289,18 @@
                                     </div>
                                 </td>
                                 <td>15/12 • 10:00-11:00</td>
-                                <td><span class="badge badge--sport">🏐 Vôlei</span></td>
+                                <td><span class="badge badge--sport"><i class="fas fa-volleyball-ball"></i> Vôlei</span></td>
                                 <td>R$ 120,00</td>
-                                <td><span class="badge badge--warning">⏳ Pendente</span></td>
+                                <td><span class="badge badge--warning"><i class="fas fa-hourglass-half"></i> Pendente</span></td>
                                 <td>
-                                    <button class="btn-icon" title="Ver detalhes">👁️</button>
-                                    <button class="btn-icon" title="Mensagem">💬</button>
+                                    <button class="btn-icon" title="Ver detalhes"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Mensagem"><i class="fas fa-comment"></i></button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="table-user">
-                                        <div class="table-avatar">👥</div>
+                                        <div class="table-avatar"><i class="fas fa-user-circle"></i></div>
                                         <div>
                                             <div class="table-name">Grupo Amigos FC</div>
                                             <div class="table-email">amigosfc@email.com</div>
@@ -307,12 +308,12 @@
                                     </div>
                                 </td>
                                 <td>15/12 • 11:00-12:00</td>
-                                <td><span class="badge badge--sport">🥅 Futsal</span></td>
+                                <td><span class="badge badge--sport"><i class="fas fa-futbol"></i> Futsal</span></td>
                                 <td>R$ 150,00</td>
-                                <td><span class="badge badge--success">✓ Pago</span></td>
+                                <td><span class="badge badge--success"><i class="fas fa-check"></i> Pago</span></td>
                                 <td>
-                                    <button class="btn-icon" title="Ver detalhes">👁️</button>
-                                    <button class="btn-icon" title="Mensagem">💬</button>
+                                    <button class="btn-icon" title="Ver detalhes"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon" title="Mensagem"><i class="fas fa-comment"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -323,20 +324,20 @@
             <!-- Reviews -->
             <section class="section-card">
                 <div class="section-card__header">
-                    <h2>Avaliações Recentes ⭐</h2>
+                    <h2>Avaliações Recentes <i class="fas fa-star" style="color: #ffd600;"></i></h2>
                     <a href="#" class="btn btn--secondary btn--sm">Ver todas</a>
                 </div>
                 <div class="reviews-grid">
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-user">
-                                <div class="review-avatar">👤</div>
+                                <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
                                 <div>
                                     <div class="review-name">Carlos Mendes</div>
                                     <div class="review-date">Há 2 dias</div>
                                 </div>
                             </div>
-                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                            <div class="review-rating"><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i></div>
                         </div>
                         <p class="review-text">
                             Excelente quadra! Muito bem cuidada, iluminação perfeita e vestiários limpos.
@@ -347,13 +348,13 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-user">
-                                <div class="review-avatar">👩</div>
+                                <div class="review-avatar"><i class="fas fa-user-circle"></i></div>
                                 <div>
                                     <div class="review-name">Maria Santos</div>
                                     <div class="review-date">Há 5 dias</div>
                                 </div>
                             </div>
-                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                            <div class="review-rating"><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i><i class="fas fa-star" style="color: #ffd600;"></i></div>
                         </div>
                         <p class="review-text">
                             Melhor quadra da região! Sempre limpa, equipamentos novos e o staff é super atencioso.
@@ -365,6 +366,7 @@
         </div>
     </main>
 
+    <script src="js/funcionalidades.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
 </html>
