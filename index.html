@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pelada Fácil - A revolução do esporte amador. Organize partidas, encontre jogadores e gerencie campeonatos.">
+    <meta name="keywords" content="pelada, futebol, esporte amador, campeonato, organizar partida, encontrar jogadores, vôlei, basquete, tênis">
+    <meta name="author" content="Pelada Fácil">
+    <meta name="theme-color" content="#00c853">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peladafacil.com.br/">
+    <meta property="og:title" content="Pelada Fácil - A Revolução do Esporte Amador">
+    <meta property="og:description" content="Nunca mais cancele um jogo por falta de jogadores. Organize partidas, encontre atletas e gerencie campeonatos.">
+    <meta property="og:image" content="https://peladafacil.com.br/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://peladafacil.com.br/">
+    <meta property="twitter:title" content="Pelada Fácil - A Revolução do Esporte Amador">
+    <meta property="twitter:description" content="Nunca mais cancele um jogo por falta de jogadores. Organize partidas, encontre atletas e gerencie campeonatos.">
+    <meta property="twitter:image" content="https://peladafacil.com.br/images/og-image.jpg">
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pelada Fácil">
+
+    <title>Pelada Fácil - A Revolução do Esporte Amador</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <span class="logo-icon">⚽</span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="#inicio" class="nav__link">Início</a></li>
+                <li><a href="#solucao" class="nav__link">Solução</a></li>
+                <li><a href="#diferenciais" class="nav__link">Diferenciais</a></li>
+                <li><a href="#esportes" class="nav__link">Esportes</a></li>
+                <li><a href="#contato" class="nav__link nav__link--cta">Cadastre-se</a></li>
+            </ul>
+            <div class="nav__toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero__container container">
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span class="badge-icon">🏆</span>
+                    <span>+65 milhões de atletas amadores no Brasil</span>
+                </div>
+                <h1 class="hero__title">
+                    A Revolução do <span class="text-gradient">Esporte Amador</span>
+                </h1>
+                <p class="hero__description">
+                    Nunca mais cancele um jogo por falta de jogadores. Organize partidas,
+                    encontre atletas, gerencie campeonatos e acompanhe suas estatísticas em tempo real.
+                </p>
+                <div class="hero__buttons">
+                    <a href="#contato" class="btn btn--primary btn--large">
+                        <span>Comece Agora</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="#solucao" class="btn btn--secondary btn--large">
+                        <span>Saiba Mais</span>
+                    </a>
+                </div>
+                <div class="hero__stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15.3M</span>
+                        <span class="stat-label">Jogadores de Futebol</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Gratuito no MVP</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Modalidades</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__image">
+                <div class="hero__card hero__card--1">
+                    <div class="card-icon">👥</div>
+                    <div class="card-content">
+                        <h4>Jogador Encontrado!</h4>
+                        <p>Carlos M. • 4.8 ⭐ • 2.5km</p>
+                    </div>
+                </div>
+                <div class="hero__card hero__card--2">
+                    <div class="card-icon">📊</div>
+                    <div class="card-content">
+                        <h4>Suas Estatísticas</h4>
+                        <p>12 Gols • 8 Assistências</p>
+                    </div>
+                </div>
+                <div class="hero__card hero__card--3">
+                    <div class="card-icon">🏆</div>
+                    <div class="card-content">
+                        <h4>Campeonato Ativo</h4>
+                        <p>Final • Domingo 15h</p>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <div class="field-lines"></div>
+                    <div class="ball-animation">⚽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem section" id="problema">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__badge">O Problema</span>
+                <h2 class="section__title">Por que o Esporte Amador <span class="text-gradient">Precisa Evoluir?</span></h2>
+            </div>
+            <div class="problem__grid">
+                <div class="problem__card">
+                    <div class="problem__icon problem__icon--red">😞</div>
+                    <h3>Falta de Gente</h3>
+                    <p>Dificuldade em fechar o time para uma partida casual ou encontrar parceiros para jogos individuais, resultando em jogos cancelados.</p>
+                    <div class="problem__stat">39.3% dos praticantes jogam futebol</div>
+                </div>
+                <div class="problem__card">
+                    <div class="problem__icon problem__icon--orange">📋</div>
+                    <h3>Gestão Ineficiente</h3>
+                    <p>A organização de torneios é manual, dispersa e ineficiente, dificultando a gestão de pagamentos, súmulas e rankings.</p>
+                    <div class="problem__stat">Horas perdidas em planilhas</div>
+                </div>
+                <div class="problem__card">
+                    <div class="problem__icon problem__icon--yellow">😴</div>
+                    <h3>Falta de Motivação</h3>
+                    <p>Atletas amadores não têm acesso a ferramentas que rastreiam desempenho e criam experiência de comunidade e evolução.</p>
+                    <div class="problem__stat">Sem estatísticas = Sem engajamento</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution section section--dark" id="solucao">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__badge section__badge--light">A Solução</span>
+                <h2 class="section__title">Tudo que Você Precisa em <span class="text-gradient">Um Só Lugar</span></h2>
+            </div>
+            <div class="solution__grid">
+                <div class="solution__item">
+                    <div class="solution__number">01</div>
+                    <div class="solution__content">
+                        <h3>Mercado de Jogadores</h3>
+                        <p>Sistema inteligente que conecta times incompletos a jogadores disponíveis na região. Com ranking, avaliações e geolocalização em tempo real.</p>
+                        <ul class="feature-list">
+                            <li>✓ Busca por proximidade</li>
+                            <li>✓ Sistema de ranking 5 estrelas</li>
+                            <li>✓ Confirmação instantânea</li>
+                        </ul>
+                    </div>
+                    <div class="solution__visual">
+                        <div class="mockup mockup--marketplace">
+                            <div class="mockup__header">Jogadores Próximos</div>
+                            <div class="mockup__list">
+                                <div class="player-item">⚽ João S. • 4.9⭐ • 1.2km</div>
+                                <div class="player-item">⚽ Maria L. • 4.7⭐ • 1.8km</div>
+                                <div class="player-item">⚽ Pedro M. • 4.8⭐ • 2.3km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution__item solution__item--reverse">
+                    <div class="solution__number">02</div>
+                    <div class="solution__content">
+                        <h3>Gamificação Completa</h3>
+                        <p>Transforme seu desempenho em evolução. Estatísticas detalhadas, conquistas, badges e ranking que motivam você a jogar mais e melhor.</p>
+                        <ul class="feature-list">
+                            <li>✓ Perfil completo do jogador</li>
+                            <li>✓ Conquistas e badges</li>
+                            <li>✓ Ranking regional e nacional</li>
+                        </ul>
+                    </div>
+                    <div class="solution__visual">
+                        <div class="mockup mockup--stats">
+                            <div class="mockup__header">Seu Perfil</div>
+                            <div class="stat-grid">
+                                <div class="stat-box">⚽ 45 Gols</div>
+                                <div class="stat-box">🎯 23 Assist.</div>
+                                <div class="stat-box">🏆 3 Títulos</div>
+                                <div class="stat-box">⭐ 4.8 Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution__item">
+                    <div class="solution__number">03</div>
+                    <div class="solution__content">
+                        <h3>Gestão de Campeonatos</h3>
+                        <p>Organize ligas e torneios completos com tabelas automáticas, súmulas digitais, gestão de árbitros e divulgação profissional.</p>
+                        <ul class="feature-list">
+                            <li>✓ Tabelas automáticas</li>
+                            <li>✓ Súmulas digitais</li>
+                            <li>✓ Arte para divulgação</li>
+                        </ul>
+                    </div>
+                    <div class="solution__visual">
+                        <div class="mockup mockup--tournament">
+                            <div class="mockup__header">Campeonato Zona Sul</div>
+                            <div class="bracket">
+                                <div class="match">Time A vs Time B</div>
+                                <div class="match">Time C vs Time D</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="differentials section" id="diferenciais">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__badge">Diferenciais</span>
+                <h2 class="section__title">Por que Escolher o <span class="text-gradient">Pelada Fácil?</span></h2>
+            </div>
+            <div class="differentials__grid">
+                <div class="diff-card">
+                    <div class="diff-card__icon">🎯</div>
+                    <h3>Mercado de Jogadores Único</h3>
+                    <p>Somos os únicos com um sistema de matching inteligente que resolve o problema da "falta de gente" em segundos.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-card__icon">🎮</div>
+                    <h3>Gamificação Real</h3>
+                    <p>Sistema completo de estatísticas, conquistas e ranking que transforma sua evolução real em progressão no app.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-card__icon">⚽</div>
+                    <h3>Multiesportivo</h3>
+                    <p>Uma única plataforma para futebol, futsal, vôlei, basquete, tênis e padel. Sem precisar de múltiplos apps.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-card__icon">🔄</div>
+                    <h3>Híbrido Unificado</h3>
+                    <p>Gerencie peladas casuais e campeonatos formais no mesmo lugar. Do sorteio de times à final do torneio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Section -->
+    <section class="sports section section--dark" id="esportes">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__badge section__badge--light">Modalidades</span>
+                <h2 class="section__title">Todos os Seus <span class="text-gradient">Esportes Favoritos</span></h2>
+            </div>
+            <div class="sports__grid">
+                <div class="sport-card sport-card--football">
+                    <div class="sport-card__icon">⚽</div>
+                    <h3>Futebol</h3>
+                    <p>15.3M jogadores no Brasil</p>
+                    <span class="sport-card__badge">Mais Popular</span>
+                </div>
+                <div class="sport-card sport-card--futsal">
+                    <div class="sport-card__icon">🥅</div>
+                    <h3>Futsal</h3>
+                    <p>Quadras e ginásios</p>
+                </div>
+                <div class="sport-card sport-card--volleyball">
+                    <div class="sport-card__icon">🏐</div>
+                    <h3>Vôlei</h3>
+                    <p>Quadra e praia</p>
+                </div>
+                <div class="sport-card sport-card--basketball">
+                    <div class="sport-card__icon">🏀</div>
+                    <h3>Basquete</h3>
+                    <p>3x3 e 5x5</p>
+                </div>
+                <div class="sport-card sport-card--tennis">
+                    <div class="sport-card__icon">🎾</div>
+                    <h3>Tênis</h3>
+                    <p>Singles e duplas</p>
+                </div>
+                <div class="sport-card sport-card--padel">
+                    <div class="sport-card__icon">🏓</div>
+                    <h3>Padel</h3>
+                    <p>O esporte que mais cresce</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section" id="contato">
+        <div class="container">
+            <div class="cta__container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Pronto para Revolucionar <span class="text-gradient">Seu Esporte?</span></h2>
+                    <p class="cta__description">Junte-se a milhares de atletas que já organizam suas partidas de forma profissional.</p>
+                    <form class="cta__form" id="ctaForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Seu melhor e-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Escolha seu esporte principal</option>
+                                <option value="futebol">Futebol</option>
+                                <option value="futsal">Futsal</option>
+                                <option value="volei">Vôlei</option>
+                                <option value="basquete">Basquete</option>
+                                <option value="tenis">Tênis</option>
+                                <option value="padel">Padel</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--large btn--full">
+                            <span>Cadastrar Interesse</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </form>
+                    <p class="cta__note">🎉 Primeiros 1000 usuários terão acesso vitalício gratuito a recursos premium!</p>
+                </div>
+                <div class="cta__stats">
+                    <div class="cta-stat-card">
+                        <div class="cta-stat-icon">💰</div>
+                        <h4>Investimento Acessível</h4>
+                        <p>MVP a partir de R$ 40.000</p>
+                    </div>
+                    <div class="cta-stat-card">
+                        <div class="cta-stat-icon">📱</div>
+                        <h4>Multiplataforma</h4>
+                        <p>iOS, Android e Web</p>
+                    </div>
+                    <div class="cta-stat-card">
+                        <div class="cta-stat-icon">🚀</div>
+                        <h4>Lançamento em 2025</h4>
+                        <p>Estamos desenvolvendo agora</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <span class="logo-icon">⚽</span>
+                        <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+                    </div>
+                    <p class="footer__description">A revolução do esporte amador brasileiro. Organize, jogue e evolua.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                </div>
+                <div class="footer__links">
+                    <h4>Plataforma</h4>
+                    <ul>
+                        <li><a href="#solucao">Como Funciona</a></li>
+                        <li><a href="#diferenciais">Diferenciais</a></li>
+                        <li><a href="#esportes">Esportes</a></li>
+                        <li><a href="#contato">Cadastre-se</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Investidores</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Pelada Fácil. Todos os direitos reservados.</p>
+                <div class="footer__legal">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Privacidade</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
