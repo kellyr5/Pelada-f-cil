@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon">⚽</span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin 👑</div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="#" class="sidebar__link active">
+                <span class="sidebar__icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">✅</span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small">12</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">🏟️</span>
+                <span>Quadras</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">👥</span>
+                <span>Usuários</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">🎮</span>
+                <span>Partidas</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">💰</span>
+                <span>Financeiro</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">📊</span>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">🚨</span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">📢</span>
+                <span>Notificações</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">⚙️</span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar">👑</div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon">🚪</span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Painel Administrativo 👑</h1>
+            </div>
+            <div class="topbar__right">
+                <button class="topbar__btn">
+                    <span class="topbar__icon">🔔</span>
+                    <span class="topbar__badge">15</span>
+                </button>
+                <button class="topbar__btn">
+                    <span class="topbar__icon">⚠️</span>
+                    <span class="topbar__badge">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Overview -->
+            <div class="stats-grid stats-grid--four">
+                <div class="stat-card stat-card--green">
+                    <div class="stat-card__icon">👥</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">24.567</div>
+                        <div class="stat-card__label">Usuários Ativos</div>
+                        <div class="stat-card__trend stat-card__trend--up">↑ 1.234 este mês</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--blue">
+                    <div class="stat-card__icon">🏟️</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">486</div>
+                        <div class="stat-card__label">Quadras Cadastradas</div>
+                        <div class="stat-card__trend stat-card__trend--up">↑ 28 este mês</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--orange">
+                    <div class="stat-card__icon">⚽</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">1.892</div>
+                        <div class="stat-card__label">Partidas (Mês)</div>
+                        <div class="stat-card__trend stat-card__trend--up">↑ 15% vs anterior</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--purple">
+                    <div class="stat-card__icon">💰</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">R$ 189K</div>
+                        <div class="stat-card__label">Receita (Mês)</div>
+                        <div class="stat-card__trend stat-card__trend--up">↑ R$ 24K vs anterior</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Approvals -->
+            <section class="section-card section-card--alert">
+                <div class="section-card__header">
+                    <h2>⏳ Aguardando Aprovação (12)</h2>
+                    <button class="btn btn--secondary btn--sm">Ver Todos</button>
+                </div>
+                <div class="approval-grid">
+                    <!-- Court Approval 1 -->
+                    <div class="approval-card">
+                        <div class="approval-header">
+                            <div class="approval-badge approval-badge--new">Nova Quadra</div>
+                            <div class="approval-type">🏟️</div>
+                        </div>
+                        <div class="approval-content">
+                            <h3>Arena Champions League</h3>
+                            <p class="approval-location">📍 Moema, São Paulo - SP</p>
+                            <div class="approval-info">
+                                <span>👤 Roberto Silva</span>
+                                <span>📅 Há 2 horas</span>
+                            </div>
+                            <div class="approval-features">
+                                <span class="feature-tag">⚽ Futebol</span>
+                                <span class="feature-tag">💡 Iluminação</span>
+                                <span class="feature-tag">🚿 Vestiário</span>
+                            </div>
+                            <p class="approval-price">💰 R$ 180/hora</p>
+                        </div>
+                        <div class="approval-actions">
+                            <button class="btn btn--success btn--sm">✓ Aprovar</button>
+                            <button class="btn btn--secondary btn--sm">👁️ Detalhes</button>
+                            <button class="btn btn--danger btn--sm">✗ Rejeitar</button>
+                        </div>
+                    </div>
+
+                    <!-- Court Approval 2 -->
+                    <div class="approval-card">
+                        <div class="approval-header">
+                            <div class="approval-badge approval-badge--new">Nova Quadra</div>
+                            <div class="approval-type">🏐</div>
+                        </div>
+                        <div class="approval-content">
+                            <h3>Beach Vôlei Paradise</h3>
+                            <p class="approval-location">📍 Vila Olímpia, São Paulo - SP</p>
+                            <div class="approval-info">
+                                <span>👤 Ana Paula</span>
+                                <span>📅 Há 5 horas</span>
+                            </div>
+                            <div class="approval-features">
+                                <span class="feature-tag">🏐 Vôlei</span>
+                                <span class="feature-tag">🏖️ Areia</span>
+                                <span class="feature-tag">🌅 Vista</span>
+                            </div>
+                            <p class="approval-price">💰 R$ 120/hora</p>
+                        </div>
+                        <div class="approval-actions">
+                            <button class="btn btn--success btn--sm">✓ Aprovar</button>
+                            <button class="btn btn--secondary btn--sm">👁️ Detalhes</button>
+                            <button class="btn btn--danger btn--sm">✗ Rejeitar</button>
+                        </div>
+                    </div>
+
+                    <!-- Court Approval 3 -->
+                    <div class="approval-card">
+                        <div class="approval-header">
+                            <div class="approval-badge approval-badge--update">Atualização</div>
+                            <div class="approval-type">🎾</div>
+                        </div>
+                        <div class="approval-content">
+                            <h3>Tennis Club Premium</h3>
+                            <p class="approval-location">📍 Jardins, São Paulo - SP</p>
+                            <div class="approval-info">
+                                <span>👤 Carlos Mendes</span>
+                                <span>📅 Há 1 dia</span>
+                            </div>
+                            <div class="approval-features">
+                                <span class="feature-tag">🎾 Tênis</span>
+                                <span class="feature-tag">🏓 Padel</span>
+                                <span class="feature-tag">🌟 Premium</span>
+                            </div>
+                            <p class="approval-price">💰 R$ 250/hora</p>
+                        </div>
+                        <div class="approval-actions">
+                            <button class="btn btn--success btn--sm">✓ Aprovar</button>
+                            <button class="btn btn--secondary btn--sm">👁️ Detalhes</button>
+                            <button class="btn btn--danger btn--sm">✗ Rejeitar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <div class="grid-2-columns">
+                <section class="section-card">
+                    <div class="section-card__header">
+                        <h2>Atividade Recente 📊</h2>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon activity-icon--success">✓</div>
+                            <div class="activity-content">
+                                <p><strong>Arena Sport Center</strong> foi aprovada</p>
+                                <span class="activity-time">Há 10 minutos</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon activity-icon--info">👤</div>
+                            <div class="activity-content">
+                                <p><strong>João Silva</strong> criou uma nova conta</p>
+                                <span class="activity-time">Há 25 minutos</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon activity-icon--warning">⚠️</div>
+                            <div class="activity-content">
+                                <p><strong>Denúncia</strong> recebida sobre Quadra XYZ</p>
+                                <span class="activity-time">Há 1 hora</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon activity-icon--success">💰</div>
+                            <div class="activity-content">
+                                <p><strong>Pagamento</strong> de R$ 150 processado</p>
+                                <span class="activity-time">Há 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon activity-icon--info">🏟️</div>
+                            <div class="activity-content">
+                                <p><strong>Beach Vôlei Paradise</strong> solicitou aprovação</p>
+                                <span class="activity-time">Há 5 horas</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-card">
+                    <div class="section-card__header">
+                        <h2>Denúncias Abertas 🚨</h2>
+                    </div>
+                    <div class="reports-list">
+                        <div class="report-item report-item--high">
+                            <div class="report-header">
+                                <div class="report-priority">🔴 Alta</div>
+                                <div class="report-time">Há 30min</div>
+                            </div>
+                            <h4>Quadra em péssimas condições</h4>
+                            <p>📍 Arena Sport City • 👤 3 denúncias</p>
+                            <button class="btn btn--sm btn--danger">Investigar</button>
+                        </div>
+                        <div class="report-item report-item--medium">
+                            <div class="report-header">
+                                <div class="report-priority">🟡 Média</div>
+                                <div class="report-time">Há 2h</div>
+                            </div>
+                            <h4>Comportamento inadequado</h4>
+                            <p>👤 Usuário: Carlos M. • 👤 1 denúncia</p>
+                            <button class="btn btn--sm btn--warning">Analisar</button>
+                        </div>
+                        <div class="report-item report-item--low">
+                            <div class="report-header">
+                                <div class="report-priority">🟢 Baixa</div>
+                                <div class="report-time">Há 1 dia</div>
+                            </div>
+                            <h4>Horário não respeitado</h4>
+                            <p>📍 Quadra Municipal • 👤 1 denúncia</p>
+                            <button class="btn btn--sm btn--secondary">Revisar</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Courts Management -->
+            <section class="section-card">
+                <div class="section-card__header">
+                    <h2>Quadras Mais Populares 🔥</h2>
+                    <a href="#" class="btn btn--secondary btn--sm">Ver todas</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Quadra</th>
+                                <th>Localização</th>
+                                <th>Reservas (Mês)</th>
+                                <th>Receita</th>
+                                <th>Avaliação</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="table-court">
+                                        <div class="table-icon">🏟️</div>
+                                        <div>
+                                            <div class="table-name">Arena Sport Center</div>
+                                            <div class="table-meta">⚽ Futebol/Futsal</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Vila Mariana, SP</td>
+                                <td>86 reservas</td>
+                                <td>R$ 12.450</td>
+                                <td>⭐ 4.9 (248)</td>
+                                <td><span class="badge badge--success">✓ Ativa</span></td>
+                                <td>
+                                    <button class="btn-icon" title="Ver">👁️</button>
+                                    <button class="btn-icon" title="Editar">✏️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-court">
+                                        <div class="table-icon">🏐</div>
+                                        <div>
+                                            <div class="table-name">Beach Vôlei Pro</div>
+                                            <div class="table-meta">🏐 Vôlei</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Pinheiros, SP</td>
+                                <td>72 reservas</td>
+                                <td>R$ 8.640</td>
+                                <td>⭐ 4.7 (156)</td>
+                                <td><span class="badge badge--success">✓ Ativa</span></td>
+                                <td>
+                                    <button class="btn-icon" title="Ver">👁️</button>
+                                    <button class="btn-icon" title="Editar">✏️</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-court">
+                                        <div class="table-icon">🏀</div>
+                                        <div>
+                                            <div class="table-name">Street Basketball</div>
+                                            <div class="table-meta">🏀 Basquete</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Mooca, SP</td>
+                                <td>64 reservas</td>
+                                <td>Gratuita</td>
+                                <td>⭐ 4.6 (98)</td>
+                                <td><span class="badge badge--success">✓ Ativa</span></td>
+                                <td>
+                                    <button class="btn-icon" title="Ver">👁️</button>
+                                    <button class="btn-icon" title="Editar">✏️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Users Management -->
+            <section class="section-card">
+                <div class="section-card__header">
+                    <h2>Novos Usuários 👥</h2>
+                    <a href="#" class="btn btn--secondary btn--sm">Gerenciar usuários</a>
+                </div>
+                <div class="users-grid">
+                    <div class="user-card">
+                        <div class="user-card__avatar">👤</div>
+                        <div class="user-card__info">
+                            <h4>João Silva</h4>
+                            <p>joao@email.com</p>
+                            <span class="badge badge--info">Jogador</span>
+                        </div>
+                        <div class="user-card__stats">
+                            <div>⚽ 12 partidas</div>
+                            <div>⭐ 4.8</div>
+                        </div>
+                        <div class="user-card__actions">
+                            <button class="btn-icon" title="Ver perfil">👁️</button>
+                            <button class="btn-icon" title="Mensagem">💬</button>
+                            <button class="btn-icon" title="Bloquear">🚫</button>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-card__avatar">👩</div>
+                        <div class="user-card__info">
+                            <h4>Ana Paula</h4>
+                            <p>ana@email.com</p>
+                            <span class="badge badge--warning">Dono Quadra</span>
+                        </div>
+                        <div class="user-card__stats">
+                            <div>🏟️ 1 quadra</div>
+                            <div>⭐ 4.9</div>
+                        </div>
+                        <div class="user-card__actions">
+                            <button class="btn-icon" title="Ver perfil">👁️</button>
+                            <button class="btn-icon" title="Mensagem">💬</button>
+                            <button class="btn-icon" title="Bloquear">🚫</button>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-card__avatar">🧔</div>
+                        <div class="user-card__info">
+                            <h4>Carlos Mendes</h4>
+                            <p>carlos@email.com</p>
+                            <span class="badge badge--info">Jogador</span>
+                        </div>
+                        <div class="user-card__stats">
+                            <div>⚽ 8 partidas</div>
+                            <div>⭐ 4.7</div>
+                        </div>
+                        <div class="user-card__actions">
+                            <button class="btn-icon" title="Ver perfil">👁️</button>
+                            <button class="btn-icon" title="Mensagem">💬</button>
+                            <button class="btn-icon" title="Bloquear">🚫</button>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-card__avatar">👨</div>
+                        <div class="user-card__info">
+                            <h4>Roberto Lima</h4>
+                            <p>roberto@email.com</p>
+                            <span class="badge badge--success">Organizador</span>
+                        </div>
+                        <div class="user-card__stats">
+                            <div>🏆 3 torneios</div>
+                            <div>⭐ 5.0</div>
+                        </div>
+                        <div class="user-card__actions">
+                            <button class="btn-icon" title="Ver perfil">👁️</button>
+                            <button class="btn-icon" title="Mensagem">💬</button>
+                            <button class="btn-icon" title="Bloquear">🚫</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

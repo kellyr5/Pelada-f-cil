@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <!-- Header Simples -->
+    <header class="header-simple">
+        <div class="container">
+            <a href="index.html" class="nav__logo">
+                <span class="logo-icon">⚽</span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Login Container -->
+    <div class="auth-container">
+        <div class="auth-wrapper">
+            <!-- Login Form -->
+            <div class="auth-card" id="loginCard">
+                <div class="auth-header">
+                    <div class="auth-icon">🔐</div>
+                    <h2>Bem-vindo de Volta!</h2>
+                    <p>Entre para organizar suas peladas</p>
+                </div>
+
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">
+                            <span class="label-icon">📧</span>
+                            E-mail
+                        </label>
+                        <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <span class="label-icon">🔑</span>
+                            Senha
+                        </label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Lembrar de mim</span>
+                        </label>
+                        <a href="#" class="link-text">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--full btn--large">
+                        <span>Entrar</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+
+                    <!-- Quick Login Options -->
+                    <div class="quick-login">
+                        <p class="quick-login__title">Ou teste como:</p>
+                        <div class="quick-login__buttons">
+                            <button type="button" class="quick-btn" data-role="user">
+                                <span class="quick-icon">👤</span>
+                                <span>Jogador</span>
+                            </button>
+                            <button type="button" class="quick-btn" data-role="court-admin">
+                                <span class="quick-icon">🏟️</span>
+                                <span>Dono Quadra</span>
+                            </button>
+                            <button type="button" class="quick-btn" data-role="admin">
+                                <span class="quick-icon">👑</span>
+                                <span>Admin</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Não tem uma conta? <a href="#" class="link-text" id="showRegister">Cadastre-se grátis</a></p>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div class="auth-card hidden" id="registerCard">
+                <div class="auth-header">
+                    <div class="auth-icon">🎉</div>
+                    <h2>Crie sua Conta</h2>
+                    <p>Junte-se a milhares de jogadores</p>
+                </div>
+
+                <form class="auth-form" id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">
+                            <span class="label-icon">👤</span>
+                            Nome Completo
+                        </label>
+                        <input type="text" id="registerName" placeholder="Seu nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerEmail">
+                            <span class="label-icon">📧</span>
+                            E-mail
+                        </label>
+                        <input type="email" id="registerEmail" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPhone">
+                            <span class="label-icon">📱</span>
+                            WhatsApp
+                        </label>
+                        <input type="tel" id="registerPhone" placeholder="(11) 99999-9999" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerType">
+                            <span class="label-icon">⚽</span>
+                            Tipo de Conta
+                        </label>
+                        <select id="registerType" required>
+                            <option value="">Selecione...</option>
+                            <option value="player">Jogador</option>
+                            <option value="court-owner">Dono de Quadra/Campo</option>
+                            <option value="organizer">Organizador de Eventos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPassword">
+                            <span class="label-icon">🔑</span>
+                            Senha
+                        </label>
+                        <input type="password" id="registerPassword" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPasswordConfirm">
+                            <span class="label-icon">✅</span>
+                            Confirmar Senha
+                        </label>
+                        <input type="password" id="registerPasswordConfirm" placeholder="••••••••" required>
+                    </div>
+
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="acceptTerms" required>
+                        <span>Aceito os <a href="#" class="link-text">termos de uso</a> e <a href="#" class="link-text">política de privacidade</a></span>
+                    </label>
+
+                    <button type="submit" class="btn btn--primary btn--full btn--large">
+                        <span>Criar Conta Grátis</span>
+                        <span class="btn-icon">🚀</span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Já tem uma conta? <a href="#" class="link-text" id="showLogin">Faça login</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="auth-decoration">
+            <div class="float-ball ball-1">⚽</div>
+            <div class="float-ball ball-2">🏀</div>
+            <div class="float-ball ball-3">🏐</div>
+            <div class="float-ball ball-4">🎾</div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

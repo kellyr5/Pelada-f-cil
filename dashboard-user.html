@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Dashboard - Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon">⚽</span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="#" class="sidebar__link active">
+                <span class="sidebar__icon">🏠</span>
+                <span>Início</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">🏟️</span>
+                <span>Quadras & Campos</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">🎮</span>
+                <span>Minhas Peladas</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">👥</span>
+                <span>Encontrar Jogadores</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">🏆</span>
+                <span>Campeonatos</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">📊</span>
+                <span>Estatísticas</span>
+            </a>
+            <a href="#" class="sidebar__link">
+                <span class="sidebar__icon">⚙️</span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar">👤</div>
+                <div class="user-info">
+                    <div class="user-name">João Silva</div>
+                    <div class="user-rating">⭐ 4.8</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon">🚪</span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Olá, João! 👋</h1>
+            </div>
+            <div class="topbar__right">
+                <button class="topbar__btn">
+                    <span class="topbar__icon">🔔</span>
+                    <span class="topbar__badge">3</span>
+                </button>
+                <button class="topbar__btn">
+                    <span class="topbar__icon">💬</span>
+                    <span class="topbar__badge">5</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card stat-card--green">
+                    <div class="stat-card__icon">⚽</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">24</div>
+                        <div class="stat-card__label">Peladas Jogadas</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--blue">
+                    <div class="stat-card__icon">🏆</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">8</div>
+                        <div class="stat-card__label">Títulos</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--orange">
+                    <div class="stat-card__icon">⭐</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">4.8</div>
+                        <div class="stat-card__label">Avaliação</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--purple">
+                    <div class="stat-card__icon">👥</div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">156</div>
+                        <div class="stat-card__label">Amigos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Matches -->
+            <section class="section-card">
+                <div class="section-card__header">
+                    <h2>Próximas Peladas 🔥</h2>
+                    <a href="#" class="btn btn--secondary btn--sm">Ver todas</a>
+                </div>
+                <div class="matches-grid">
+                    <div class="match-card">
+                        <div class="match-card__badge match-card__badge--confirmed">Confirmado</div>
+                        <div class="match-card__date">
+                            <div class="date-day">15</div>
+                            <div class="date-month">DEZ</div>
+                        </div>
+                        <div class="match-card__info">
+                            <h3>Pelada Zona Sul</h3>
+                            <p>🏟️ Arena Sport Center</p>
+                            <p>🕐 Sábado, 15:00</p>
+                            <p>👥 10/12 jogadores</p>
+                        </div>
+                        <div class="match-card__actions">
+                            <button class="btn btn--primary btn--sm">Ver Detalhes</button>
+                        </div>
+                    </div>
+
+                    <div class="match-card">
+                        <div class="match-card__badge match-card__badge--pending">Aguardando</div>
+                        <div class="match-card__date">
+                            <div class="date-day">18</div>
+                            <div class="date-month">DEZ</div>
+                        </div>
+                        <div class="match-card__info">
+                            <h3>Rachão Domingo</h3>
+                            <p>🏟️ Campo do Parque</p>
+                            <p>🕐 Domingo, 09:00</p>
+                            <p>👥 8/14 jogadores</p>
+                        </div>
+                        <div class="match-card__actions">
+                            <button class="btn btn--primary btn--sm">Confirmar Presença</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Available Courts -->
+            <section class="section-card">
+                <div class="section-card__header">
+                    <h2>Quadras & Campos Próximos 📍</h2>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">Todos</button>
+                        <button class="filter-tab">Futebol</button>
+                        <button class="filter-tab">Futsal</button>
+                        <button class="filter-tab">Vôlei</button>
+                    </div>
+                </div>
+
+                <div class="courts-grid">
+                    <!-- Court Card 1 -->
+                    <div class="court-card">
+                        <div class="court-card__image">
+                            <div class="court-placeholder">🏟️</div>
+                            <div class="court-card__badge court-card__badge--featured">Destaque</div>
+                        </div>
+                        <div class="court-card__content">
+                            <div class="court-card__header">
+                                <h3>Arena Sport Center</h3>
+                                <div class="court-rating">⭐ 4.9</div>
+                            </div>
+                            <p class="court-location">📍 Vila Mariana, SP • 2.5km</p>
+                            <div class="court-features">
+                                <span class="feature-tag">⚽ Futebol</span>
+                                <span class="feature-tag">🥅 Futsal</span>
+                                <span class="feature-tag">💡 Iluminação</span>
+                            </div>
+                            <div class="court-info">
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>R$ 150/hora</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕐</span>
+                                    <span>07:00 - 23:00</span>
+                                </div>
+                            </div>
+                            <div class="court-card__actions">
+                                <button class="btn btn--primary btn--full">Ver Horários</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Court Card 2 -->
+                    <div class="court-card">
+                        <div class="court-card__image">
+                            <div class="court-placeholder">🏐</div>
+                        </div>
+                        <div class="court-card__content">
+                            <div class="court-card__header">
+                                <h3>Quadra Beach Vôlei Pro</h3>
+                                <div class="court-rating">⭐ 4.7</div>
+                            </div>
+                            <p class="court-location">📍 Pinheiros, SP • 3.2km</p>
+                            <div class="court-features">
+                                <span class="feature-tag">🏐 Vôlei</span>
+                                <span class="feature-tag">🏖️ Areia</span>
+                                <span class="feature-tag">🚿 Vestiário</span>
+                            </div>
+                            <div class="court-info">
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>R$ 100/hora</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕐</span>
+                                    <span>08:00 - 22:00</span>
+                                </div>
+                            </div>
+                            <div class="court-card__actions">
+                                <button class="btn btn--primary btn--full">Ver Horários</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Court Card 3 -->
+                    <div class="court-card">
+                        <div class="court-card__image">
+                            <div class="court-placeholder">🏀</div>
+                        </div>
+                        <div class="court-card__content">
+                            <div class="court-card__header">
+                                <h3>Quadra Street Basketball</h3>
+                                <div class="court-rating">⭐ 4.6</div>
+                            </div>
+                            <p class="court-location">📍 Mooca, SP • 4.1km</p>
+                            <div class="court-features">
+                                <span class="feature-tag">🏀 Basquete</span>
+                                <span class="feature-tag">🎨 Street Art</span>
+                                <span class="feature-tag">🆓 Grátis</span>
+                            </div>
+                            <div class="court-info">
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>Gratuito</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕐</span>
+                                    <span>24 horas</span>
+                                </div>
+                            </div>
+                            <div class="court-card__actions">
+                                <button class="btn btn--primary btn--full">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Court Card 4 -->
+                    <div class="court-card">
+                        <div class="court-card__image">
+                            <div class="court-placeholder">🎾</div>
+                        </div>
+                        <div class="court-card__content">
+                            <div class="court-card__header">
+                                <h3>Tennis Club Premium</h3>
+                                <div class="court-rating">⭐ 5.0</div>
+                            </div>
+                            <p class="court-location">📍 Jardins, SP • 5.0km</p>
+                            <div class="court-features">
+                                <span class="feature-tag">🎾 Tênis</span>
+                                <span class="feature-tag">🏓 Padel</span>
+                                <span class="feature-tag">🌟 Premium</span>
+                            </div>
+                            <div class="court-info">
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>R$ 200/hora</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕐</span>
+                                    <span>06:00 - 22:00</span>
+                                </div>
+                            </div>
+                            <div class="court-card__actions">
+                                <button class="btn btn--primary btn--full">Ver Horários</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card__footer">
+                    <button class="btn btn--secondary">Carregar Mais Quadras</button>
+                </div>
+            </section>
+
+            <!-- Find Players -->
+            <section class="section-card">
+                <div class="section-card__header">
+                    <h2>Jogadores Disponíveis Agora 🎮</h2>
+                    <a href="#" class="btn btn--secondary btn--sm">Ver todos</a>
+                </div>
+                <div class="players-grid">
+                    <div class="player-card">
+                        <div class="player-avatar">🧑</div>
+                        <div class="player-info">
+                            <h4>Carlos Mendes</h4>
+                            <div class="player-rating">⭐ 4.9 • Atacante</div>
+                            <p class="player-location">📍 2.1km de você</p>
+                        </div>
+                        <button class="btn btn--primary btn--sm">Convidar</button>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-avatar">👩</div>
+                        <div class="player-info">
+                            <h4>Ana Paula</h4>
+                            <div class="player-rating">⭐ 4.8 • Meio-campo</div>
+                            <p class="player-location">📍 1.5km de você</p>
+                        </div>
+                        <button class="btn btn--primary btn--sm">Convidar</button>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-avatar">🧔</div>
+                        <div class="player-info">
+                            <h4>Roberto Lima</h4>
+                            <div class="player-rating">⭐ 4.7 • Goleiro</div>
+                            <p class="player-location">📍 3.2km de você</p>
+                        </div>
+                        <button class="btn btn--primary btn--sm">Convidar</button>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-avatar">👨</div>
+                        <div class="player-info">
+                            <h4>Felipe Santos</h4>
+                            <div class="player-rating">⭐ 4.6 • Zagueiro</div>
+                            <p class="player-location">📍 4.0km de você</p>
+                        </div>
+                        <button class="btn btn--primary btn--sm">Convidar</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
