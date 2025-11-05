@@ -1,343 +1,237 @@
 /**
  * PELADA FÁCIL - AUTHENTICATION
- * Login & Registration System with Real Credentials
+ * Sistema de autenticação SEM loops
  */
 
-// === CREDENCIAIS DE TESTE ===
+// === CREDENCIAIS ===
 const USERS = {
-    'admin@peladafacil.com': {
-        password: 'admin123',
-        name: 'Admin Master',
-        role: 'admin'
-    },
-    'quadra@demo.com': {
-        password: 'quadra123',
-        name: 'Arena Sport Center',
-        role: 'court-admin'
-    },
-    'jogador@demo.com': {
-        password: 'jogador123',
-        name: 'João Silva',
-        role: 'user'
-    }
+    'admin@peladafacil.com': { password: 'admin123', name: 'Admin Master', role: 'admin' },
+    'quadra@demo.com': { password: 'quadra123', name: 'Arena Sport Center', role: 'court-admin' },
+    'jogador@demo.com': { password: 'jogador123', name: 'João Silva', role: 'user' }
 };
 
-// === DOM ELEMENTS ===
-const loginCard = document.getElementById('loginCard');
-const registerCard = document.getElementById('registerCard');
-const showRegisterLink = document.getElementById('showRegister');
-const showLoginLink = document.getElementById('showLogin');
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-const quickBtns = document.querySelectorAll('.quick-btn');
+// === STATE ===
+let isProcessing = false;
 
-// === PREVENT AUTO REDIRECT LOOP ===
-let isRedirecting = false;
+// === INITIALIZE ===
+document.addEventListener('DOMContentLoaded', () => {
+    initLoginForm();
+    initRegisterForm();
+    initQuickLogin();
+    initToggleForms();
 
-// === SWITCH BETWEEN LOGIN/REGISTER ===
-if (showRegisterLink) {
-    showRegisterLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginCard.classList.add('hidden');
-        registerCard.classList.remove('hidden');
-    });
-}
+    // NO AUTO-REDIRECT - Let user stay on login page if they want
+    console.log('%c⚽ Pelada Fácil - Login', 'font-size: 16px; font-weight: bold; color: #00c853;');
+    console.log('%cCredenciais: admin@peladafacil.com / admin123', 'color: #999;');
+});
 
-if (showLoginLink) {
-    showLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        registerCard.classList.add('hidden');
-        loginCard.classList.remove('hidden');
-    });
+// === TOGGLE FORMS ===
+function initToggleForms() {
+    const showRegister = document.getElementById('showRegister');
+    const showLogin = document.getElementById('showLogin');
+    const loginCard = document.getElementById('loginCard');
+    const registerCard = document.getElementById('registerCard');
+
+    if (showRegister) {
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginCard.classList.add('hidden');
+            registerCard.classList.remove('hidden');
+        });
+    }
+
+    if (showLogin) {
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerCard.classList.add('hidden');
+            loginCard.classList.remove('hidden');
+        });
+    }
 }
 
 // === LOGIN FORM ===
-if (loginForm) {
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+function initLoginForm() {
+    const form = document.getElementById('loginForm');
+    if (!form) return;
 
-        if (isRedirecting) return; // Prevent double submission
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (isProcessing) return;
+
+        isProcessing = true;
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span>Entrando...</span>';
+        btn.disabled = true;
 
         const email = document.getElementById('loginEmail').value.trim().toLowerCase();
         const password = document.getElementById('loginPassword').value;
-        const rememberMe = document.getElementById('rememberMe').checked;
 
-        // Show loading state
-        const submitBtn = loginForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span>Entrando...</span>';
-        submitBtn.disabled = true;
+        await new Promise(resolve => setTimeout(resolve, 500));
 
-        // Wait a bit for UX
-        await new Promise(resolve => setTimeout(resolve, 800));
-
-        // Validate credentials
         const user = USERS[email];
 
         if (!user || user.password !== password) {
-            showNotification('❌ Email ou senha incorretos.', 'error');
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+            showMsg('❌ Email ou senha incorretos', 'error');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            isProcessing = false;
             return;
         }
 
-        // Success! Store login data
-        isRedirecting = true;
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userEmail', email);
-        localStorage.setItem('userName', user.name);
-        localStorage.setItem('userRole', user.role);
+        // SUCCESS
+        localStorage.setItem('auth_user', JSON.stringify({
+            email: email,
+            name: user.name,
+            role: user.role,
+            timestamp: Date.now()
+        }));
 
-        if (rememberMe) {
-            localStorage.setItem('rememberMe', 'true');
-        }
+        showMsg(`✅ Bem-vindo, ${user.name}!`, 'success');
 
-        // Success notification
-        showNotification(`✅ Bem-vindo, ${user.name}!`, 'success');
-
-        // Redirect after 1 second
         setTimeout(() => {
-            redirectToDashboard(user.role);
-        }, 1000);
+            goToDashboard(user.role);
+        }, 500);
     });
 }
 
 // === REGISTER FORM ===
-if (registerForm) {
-    registerForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+function initRegisterForm() {
+    const form = document.getElementById('registerForm');
+    if (!form) return;
 
-        if (isRedirecting) return; // Prevent double submission
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (isProcessing) return;
+
+        isProcessing = true;
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span>Criando...</span>';
+        btn.disabled = true;
 
         const name = document.getElementById('registerName').value.trim();
         const email = document.getElementById('registerEmail').value.trim().toLowerCase();
-        const phone = document.getElementById('registerPhone').value.trim();
-        const type = document.getElementById('registerType').value;
         const password = document.getElementById('registerPassword').value;
         const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
-        const acceptTerms = document.getElementById('acceptTerms').checked;
+        const type = document.getElementById('registerType').value;
 
-        // Validation
-        if (!name || !email || !phone || !type || !password) {
-            showNotification('❌ Preencha todos os campos.', 'error');
+        if (!name || !email || !password || !type) {
+            showMsg('❌ Preencha todos os campos', 'error');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            isProcessing = false;
             return;
         }
 
         if (password !== passwordConfirm) {
-            showNotification('❌ As senhas não coincidem.', 'error');
-            return;
-        }
-
-        if (!acceptTerms) {
-            showNotification('❌ Você precisa aceitar os termos de uso.', 'error');
+            showMsg('❌ As senhas não coincidem', 'error');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            isProcessing = false;
             return;
         }
 
         if (password.length < 6) {
-            showNotification('❌ A senha deve ter pelo menos 6 caracteres.', 'error');
+            showMsg('❌ Senha deve ter 6+ caracteres', 'error');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            isProcessing = false;
             return;
         }
 
-        // Check if email already exists
-        if (USERS[email]) {
-            showNotification('❌ Este email já está cadastrado. Faça login.', 'error');
-            return;
-        }
+        await new Promise(resolve => setTimeout(resolve, 500));
 
-        // Show loading state
-        const submitBtn = registerForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span>Criando conta...</span>';
-        submitBtn.disabled = true;
+        const role = type === 'court-owner' ? 'court-admin' : 'user';
 
-        // Wait for UX
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        localStorage.setItem('auth_user', JSON.stringify({
+            email: email,
+            name: name,
+            role: role,
+            timestamp: Date.now()
+        }));
 
-        // Determine role based on type
-        let role = 'user';
-        if (type === 'court-owner') {
-            role = 'court-admin';
-        } else if (type === 'organizer') {
-            role = 'user'; // Organizers use user dashboard for now
-        }
+        showMsg('🎉 Conta criada!', 'success');
 
-        // Store registration data
-        isRedirecting = true;
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userEmail', email);
-        localStorage.setItem('userName', name);
-        localStorage.setItem('userRole', role);
-
-        // Success notification
-        showNotification('🎉 Conta criada com sucesso!', 'success');
-
-        // Redirect after 1.5 seconds
         setTimeout(() => {
-            redirectToDashboard(role);
-        }, 1500);
+            goToDashboard(role);
+        }, 500);
     });
 }
 
-// === QUICK LOGIN BUTTONS ===
-quickBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
+// === QUICK LOGIN ===
+function initQuickLogin() {
+    const btns = document.querySelectorAll('.quick-btn');
 
-        if (isRedirecting) return; // Prevent double click
+    btns.forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (isProcessing) return;
 
-        const role = btn.dataset.role;
+            isProcessing = true;
+            btn.style.opacity = '0.5';
 
-        // Show loading
-        btn.style.opacity = '0.5';
-        btn.style.pointerEvents = 'none';
+            const role = btn.dataset.role;
+            let userData;
 
-        // Set credentials based on role
-        let userData = {};
-        if (role === 'admin') {
-            userData = USERS['admin@peladafacil.com'];
-        } else if (role === 'court-admin') {
-            userData = USERS['quadra@demo.com'];
-        } else {
-            userData = USERS['jogador@demo.com'];
-        }
+            if (role === 'admin') userData = USERS['admin@peladafacil.com'];
+            else if (role === 'court-admin') userData = USERS['quadra@demo.com'];
+            else userData = USERS['jogador@demo.com'];
 
-        // Store demo login
-        isRedirecting = true;
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userRole', role);
-        localStorage.setItem('userName', userData.name);
-        localStorage.setItem('userEmail', Object.keys(USERS).find(email => USERS[email].role === role));
+            await new Promise(resolve => setTimeout(resolve, 300));
 
-        showNotification(`✅ Entrando como ${userData.name}...`, 'success');
+            localStorage.setItem('auth_user', JSON.stringify({
+                email: Object.keys(USERS).find(e => USERS[e].role === role),
+                name: userData.name,
+                role: role,
+                timestamp: Date.now()
+            }));
 
-        // Redirect based on role
-        setTimeout(() => {
-            redirectToDashboard(role);
-        }, 800);
-    });
-});
+            showMsg(`✅ Entrando como ${userData.name}...`, 'success');
 
-// === UTILITY FUNCTIONS ===
-
-// Redirect to appropriate dashboard
-function redirectToDashboard(role) {
-    if (role === 'admin') {
-        window.location.href = 'dashboard-admin.html';
-    } else if (role === 'court-admin') {
-        window.location.href = 'dashboard-court.html';
-    } else {
-        window.location.href = 'dashboard-user.html';
-    }
-}
-
-// Show notification
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-
-    // Create notification
-    const notification = document.createElement('div');
-    notification.className = `notification notification--${type}`;
-    notification.innerHTML = message;
-
-    // Add styles
-    const colors = {
-        success: '#00c853',
-        error: '#ff1744',
-        warning: '#ffd600',
-        info: '#0066ff'
-    };
-
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: ${colors[type] || colors.info};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        z-index: 9999;
-        animation: slideInRight 0.3s ease;
-        font-weight: 600;
-        max-width: 400px;
-    `;
-
-    document.body.appendChild(notification);
-
-    // Remove after 4 seconds
-    setTimeout(() => {
-        notification.style.animation = 'slideOutRight 0.3s ease';
-        setTimeout(() => notification.remove(), 300);
-    }, 4000);
-}
-
-// === CHECK IF ALREADY LOGGED IN ===
-// Only redirect if not already in the process of redirecting
-window.addEventListener('DOMContentLoaded', () => {
-    // Small delay to ensure page is fully loaded
-    setTimeout(() => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn');
-        const userRole = localStorage.getItem('userRole');
-
-        // If on login page and already logged in, show message and redirect
-        if (isLoggedIn === 'true' && window.location.pathname.includes('login.html') && !isRedirecting) {
-            const userName = localStorage.getItem('userName') || 'Usuário';
-            showNotification(`👋 Você já está logado como ${userName}!`, 'info');
-
-            isRedirecting = true;
             setTimeout(() => {
-                redirectToDashboard(userRole);
-            }, 1500);
-        }
-    }, 100);
-});
+                goToDashboard(role);
+            }, 400);
+        });
+    });
+}
 
-// === ANIMATIONS ===
+// === REDIRECT ===
+function goToDashboard(role) {
+    if (role === 'admin') {
+        window.location.replace('dashboard-admin.html');
+    } else if (role === 'court-admin') {
+        window.location.replace('dashboard-court.html');
+    } else {
+        window.location.replace('dashboard-user.html');
+    }
+}
+
+// === NOTIFICATION ===
+function showMsg(msg, type) {
+    const existing = document.querySelector('.msg-notification');
+    if (existing) existing.remove();
+
+    const colors = { success: '#00c853', error: '#ff1744', info: '#0066ff' };
+    const div = document.createElement('div');
+    div.className = 'msg-notification';
+    div.textContent = msg;
+    div.style.cssText = `
+        position: fixed; top: 100px; right: 20px; z-index: 99999;
+        background: ${colors[type]}; color: white; padding: 1rem 1.5rem;
+        border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        font-weight: 600; animation: slideIn 0.3s ease;
+    `;
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 3000);
+}
+
+// === STYLES ===
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes slideInRight {
-        from {
-            opacity: 0;
-            transform: translateX(100px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes slideOutRight {
-        from {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateX(100px);
-        }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(100px); }
+        to { opacity: 1; transform: translateX(0); }
     }
 `;
 document.head.appendChild(style);
-
-// === CONSOLE MESSAGE ===
-console.log('%c⚽ Pelada Fácil - Sistema de Autenticação', 'font-size: 16px; font-weight: bold; color: #00c853;');
-console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #00c853;');
-console.log('%cCREDENCIAIS DE TESTE:', 'font-size: 14px; font-weight: bold; color: #0066ff;');
-console.log('%c', '');
-console.log('%c👑 SUPER ADMIN:', 'font-weight: bold; color: #ffd700;');
-console.log('%c   Email: admin@peladafacil.com', 'color: #999;');
-console.log('%c   Senha: admin123', 'color: #999;');
-console.log('%c', '');
-console.log('%c🏟️ DONO DE QUADRA:', 'font-weight: bold; color: #00c853;');
-console.log('%c   Email: quadra@demo.com', 'color: #999;');
-console.log('%c   Senha: quadra123', 'color: #999;');
-console.log('%c', '');
-console.log('%c👤 JOGADOR:', 'font-weight: bold; color: #0066ff;');
-console.log('%c   Email: jogador@demo.com', 'color: #999;');
-console.log('%c   Senha: jogador123', 'color: #999;');
-console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #00c853;');
-console.log('%cOu use os botões de login rápido! 🚀', 'font-size: 12px; color: #00c853;');
