@@ -1,39 +1,124 @@
-/**
- * PELADA FÁCIL - AUTHENTICATION
- * Sistema de autenticação SEM loops
- */
+// ==========================================
+// PELADA FÁCIL - SISTEMA DE AUTENTICAÇÃO
+// Versão Ultra-Simples - SEM BUGS
+// ==========================================
 
-// === CREDENCIAIS ===
-const USERS = {
-    'admin@peladafacil.com': { password: 'admin123', name: 'Admin Master', role: 'admin' },
-    'quadra@demo.com': { password: 'quadra123', name: 'Arena Sport Center', role: 'court-admin' },
-    'jogador@demo.com': { password: 'jogador123', name: 'João Silva', role: 'user' }
+console.log('🔐 Sistema de Login Carregado');
+
+// CREDENCIAIS DE TESTE
+const CREDENTIALS = {
+    'admin@peladafacil.com': { pass: 'admin123', name: 'Admin Master', role: 'admin' },
+    'quadra@demo.com': { pass: 'quadra123', name: 'Arena Sport Center', role: 'court' },
+    'jogador@demo.com': { pass: 'jogador123', name: 'João Silva', role: 'user' }
 };
 
-// === STATE ===
-let isProcessing = false;
+// ==========================================
+// FUNÇÕES DE LOGIN
+// ==========================================
 
-// === INITIALIZE ===
-document.addEventListener('DOMContentLoaded', () => {
-    initLoginForm();
-    initRegisterForm();
-    initQuickLogin();
-    initToggleForms();
+// Login com formulário
+function handleLoginForm(event) {
+    event.preventDefault();
 
-    // NO AUTO-REDIRECT - Let user stay on login page if they want
-    console.log('%c⚽ Pelada Fácil - Login', 'font-size: 16px; font-weight: bold; color: #00c853;');
-    console.log('%cCredenciais: admin@peladafacil.com / admin123', 'color: #999;');
-});
+    const email = document.getElementById('loginEmail').value.toLowerCase().trim();
+    const password = document.getElementById('loginPassword').value;
 
-// === TOGGLE FORMS ===
-function initToggleForms() {
+    console.log('Tentando login:', email);
+
+    const user = CREDENTIALS[email];
+
+    if (!user || user.pass !== password) {
+        alert('❌ Email ou senha incorretos!\n\nTente:\nadmin@peladafacil.com / admin123');
+        return;
+    }
+
+    // Salvar sessão
+    sessionStorage.setItem('user', JSON.stringify({
+        email: email,
+        name: user.name,
+        role: user.role
+    }));
+
+    console.log('✅ Login OK! Redirecionando...');
+
+    // Redirecionar
+    redirectToDashboard(user.role);
+}
+
+// Login rápido
+function handleQuickLogin(role) {
+    console.log('Login rápido:', role);
+
+    let email, userData;
+
+    if (role === 'admin') {
+        email = 'admin@peladafacil.com';
+        userData = CREDENTIALS[email];
+    } else if (role === 'court-admin') {
+        email = 'quadra@demo.com';
+        userData = CREDENTIALS[email];
+        role = 'court'; // Ajuste do role
+    } else {
+        email = 'jogador@demo.com';
+        userData = CREDENTIALS[email];
+        role = 'user'; // Ajuste do role
+    }
+
+    // Salvar sessão
+    sessionStorage.setItem('user', JSON.stringify({
+        email: email,
+        name: userData.name,
+        role: role
+    }));
+
+    console.log('✅ Login rápido OK! Redirecionando...');
+
+    // Redirecionar
+    redirectToDashboard(role);
+}
+
+// Redirecionar para dashboard correto
+function redirectToDashboard(role) {
+    if (role === 'admin') {
+        window.location.href = 'dashboard-admin.html';
+    } else if (role === 'court') {
+        window.location.href = 'dashboard-court.html';
+    } else {
+        window.location.href = 'dashboard-user.html';
+    }
+}
+
+// ==========================================
+// INICIALIZAÇÃO
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📄 Página de login carregada');
+
+    // Formulário de login
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLoginForm);
+    }
+
+    // Botões de login rápido
+    const quickBtns = document.querySelectorAll('.quick-btn');
+    quickBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const role = this.getAttribute('data-role');
+            handleQuickLogin(role);
+        });
+    });
+
+    // Alternância entre login e registro
     const showRegister = document.getElementById('showRegister');
     const showLogin = document.getElementById('showLogin');
     const loginCard = document.getElementById('loginCard');
     const registerCard = document.getElementById('registerCard');
 
     if (showRegister) {
-        showRegister.addEventListener('click', (e) => {
+        showRegister.addEventListener('click', function(e) {
             e.preventDefault();
             loginCard.classList.add('hidden');
             registerCard.classList.remove('hidden');
@@ -41,197 +126,51 @@ function initToggleForms() {
     }
 
     if (showLogin) {
-        showLogin.addEventListener('click', (e) => {
+        showLogin.addEventListener('click', function(e) {
             e.preventDefault();
             registerCard.classList.add('hidden');
             loginCard.classList.remove('hidden');
         });
     }
-}
 
-// === LOGIN FORM ===
-function initLoginForm() {
-    const form = document.getElementById('loginForm');
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (isProcessing) return;
-
-        isProcessing = true;
-        const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<span>Entrando...</span>';
-        btn.disabled = true;
-
-        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-        const password = document.getElementById('loginPassword').value;
-
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        const user = USERS[email];
-
-        if (!user || user.password !== password) {
-            showMsg('❌ Email ou senha incorretos', 'error');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-            isProcessing = false;
-            return;
-        }
-
-        // SUCCESS
-        localStorage.setItem('auth_user', JSON.stringify({
-            email: email,
-            name: user.name,
-            role: user.role,
-            timestamp: Date.now()
-        }));
-
-        showMsg(`✅ Bem-vindo, ${user.name}!`, 'success');
-
-        setTimeout(() => {
-            goToDashboard(user.role);
-        }, 500);
-    });
-}
-
-// === REGISTER FORM ===
-function initRegisterForm() {
-    const form = document.getElementById('registerForm');
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (isProcessing) return;
-
-        isProcessing = true;
-        const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<span>Criando...</span>';
-        btn.disabled = true;
-
-        const name = document.getElementById('registerName').value.trim();
-        const email = document.getElementById('registerEmail').value.trim().toLowerCase();
-        const password = document.getElementById('registerPassword').value;
-        const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
-        const type = document.getElementById('registerType').value;
-
-        if (!name || !email || !password || !type) {
-            showMsg('❌ Preencha todos os campos', 'error');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-            isProcessing = false;
-            return;
-        }
-
-        if (password !== passwordConfirm) {
-            showMsg('❌ As senhas não coincidem', 'error');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-            isProcessing = false;
-            return;
-        }
-
-        if (password.length < 6) {
-            showMsg('❌ Senha deve ter 6+ caracteres', 'error');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-            isProcessing = false;
-            return;
-        }
-
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        const role = type === 'court-owner' ? 'court-admin' : 'user';
-
-        localStorage.setItem('auth_user', JSON.stringify({
-            email: email,
-            name: name,
-            role: role,
-            timestamp: Date.now()
-        }));
-
-        showMsg('🎉 Conta criada!', 'success');
-
-        setTimeout(() => {
-            goToDashboard(role);
-        }, 500);
-    });
-}
-
-// === QUICK LOGIN ===
-function initQuickLogin() {
-    const btns = document.querySelectorAll('.quick-btn');
-
-    btns.forEach(btn => {
-        btn.addEventListener('click', async (e) => {
+    // Formulário de registro
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            if (isProcessing) return;
 
-            isProcessing = true;
-            btn.style.opacity = '0.5';
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.toLowerCase().trim();
+            const type = document.getElementById('registerType').value;
+            const password = document.getElementById('registerPassword').value;
+            const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
 
-            const role = btn.dataset.role;
-            let userData;
+            if (password !== passwordConfirm) {
+                alert('❌ As senhas não coincidem!');
+                return;
+            }
 
-            if (role === 'admin') userData = USERS['admin@peladafacil.com'];
-            else if (role === 'court-admin') userData = USERS['quadra@demo.com'];
-            else userData = USERS['jogador@demo.com'];
+            if (password.length < 6) {
+                alert('❌ A senha deve ter pelo menos 6 caracteres!');
+                return;
+            }
 
-            await new Promise(resolve => setTimeout(resolve, 300));
+            const role = type === 'court-owner' ? 'court' : 'user';
 
-            localStorage.setItem('auth_user', JSON.stringify({
-                email: Object.keys(USERS).find(e => USERS[e].role === role),
-                name: userData.name,
-                role: role,
-                timestamp: Date.now()
+            // Salvar sessão
+            sessionStorage.setItem('user', JSON.stringify({
+                email: email,
+                name: name,
+                role: role
             }));
 
-            showMsg(`✅ Entrando como ${userData.name}...`, 'success');
+            alert('🎉 Conta criada com sucesso!');
 
-            setTimeout(() => {
-                goToDashboard(role);
-            }, 400);
+            // Redirecionar
+            redirectToDashboard(role);
         });
-    });
-}
-
-// === REDIRECT ===
-function goToDashboard(role) {
-    if (role === 'admin') {
-        window.location.replace('dashboard-admin.html');
-    } else if (role === 'court-admin') {
-        window.location.replace('dashboard-court.html');
-    } else {
-        window.location.replace('dashboard-user.html');
     }
-}
 
-// === NOTIFICATION ===
-function showMsg(msg, type) {
-    const existing = document.querySelector('.msg-notification');
-    if (existing) existing.remove();
-
-    const colors = { success: '#00c853', error: '#ff1744', info: '#0066ff' };
-    const div = document.createElement('div');
-    div.className = 'msg-notification';
-    div.textContent = msg;
-    div.style.cssText = `
-        position: fixed; top: 100px; right: 20px; z-index: 99999;
-        background: ${colors[type]}; color: white; padding: 1rem 1.5rem;
-        border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        font-weight: 600; animation: slideIn 0.3s ease;
-    `;
-    document.body.appendChild(div);
-    setTimeout(() => div.remove(), 3000);
-}
-
-// === STYLES ===
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { opacity: 0; transform: translateX(100px); }
-        to { opacity: 1; transform: translateX(0); }
-    }
-`;
-document.head.appendChild(style);
+    console.log('✅ Eventos de login configurados');
+    console.log('📝 Use: admin@peladafacil.com / admin123');
+});
