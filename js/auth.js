@@ -1,7 +1,26 @@
 /**
  * PELADA FÁCIL - AUTHENTICATION
- * Login & Registration System
+ * Login & Registration System with Real Credentials
  */
+
+// === CREDENCIAIS DE TESTE ===
+const USERS = {
+    'admin@peladafacil.com': {
+        password: 'admin123',
+        name: 'Admin Master',
+        role: 'admin'
+    },
+    'quadra@demo.com': {
+        password: 'quadra123',
+        name: 'Arena Sport Center',
+        role: 'court-admin'
+    },
+    'jogador@demo.com': {
+        password: 'jogador123',
+        name: 'João Silva',
+        role: 'user'
+    }
+};
 
 // === DOM ELEMENTS ===
 const loginCard = document.getElementById('loginCard');
@@ -11,6 +30,9 @@ const showLoginLink = document.getElementById('showLogin');
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
 const quickBtns = document.querySelectorAll('.quick-btn');
+
+// === PREVENT AUTO REDIRECT LOOP ===
+let isRedirecting = false;
 
 // === SWITCH BETWEEN LOGIN/REGISTER ===
 if (showRegisterLink) {
@@ -34,7 +56,9 @@ if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const email = document.getElementById('loginEmail').value;
+        if (isRedirecting) return; // Prevent double submission
+
+        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
         const password = document.getElementById('loginPassword').value;
         const rememberMe = document.getElementById('rememberMe').checked;
 
@@ -44,28 +68,37 @@ if (loginForm) {
         submitBtn.innerHTML = '<span>Entrando...</span>';
         submitBtn.disabled = true;
 
-        try {
-            // Simulate API call (replace with real API)
-            await simulateApiCall({ email, password, rememberMe });
+        // Wait a bit for UX
+        await new Promise(resolve => setTimeout(resolve, 800));
 
-            // Store login data (for demo)
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userRole', 'user');
+        // Validate credentials
+        const user = USERS[email];
 
-            // Success notification
-            showNotification('✅ Login realizado com sucesso!', 'success');
-
-            // Redirect after 1 second
-            setTimeout(() => {
-                window.location.href = 'dashboard-user.html';
-            }, 1000);
-
-        } catch (error) {
+        if (!user || user.password !== password) {
             showNotification('❌ Email ou senha incorretos.', 'error');
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
+            return;
         }
+
+        // Success! Store login data
+        isRedirecting = true;
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userName', user.name);
+        localStorage.setItem('userRole', user.role);
+
+        if (rememberMe) {
+            localStorage.setItem('rememberMe', 'true');
+        }
+
+        // Success notification
+        showNotification(`✅ Bem-vindo, ${user.name}!`, 'success');
+
+        // Redirect after 1 second
+        setTimeout(() => {
+            redirectToDashboard(user.role);
+        }, 1000);
     });
 }
 
@@ -74,15 +107,22 @@ if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const name = document.getElementById('registerName').value;
-        const email = document.getElementById('registerEmail').value;
-        const phone = document.getElementById('registerPhone').value;
+        if (isRedirecting) return; // Prevent double submission
+
+        const name = document.getElementById('registerName').value.trim();
+        const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+        const phone = document.getElementById('registerPhone').value.trim();
         const type = document.getElementById('registerType').value;
         const password = document.getElementById('registerPassword').value;
         const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
         const acceptTerms = document.getElementById('acceptTerms').checked;
 
         // Validation
+        if (!name || !email || !phone || !type || !password) {
+            showNotification('❌ Preencha todos os campos.', 'error');
+            return;
+        }
+
         if (password !== passwordConfirm) {
             showNotification('❌ As senhas não coincidem.', 'error');
             return;
@@ -98,39 +138,43 @@ if (registerForm) {
             return;
         }
 
+        // Check if email already exists
+        if (USERS[email]) {
+            showNotification('❌ Este email já está cadastrado. Faça login.', 'error');
+            return;
+        }
+
         // Show loading state
         const submitBtn = registerForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span>Criando conta...</span>';
         submitBtn.disabled = true;
 
-        try {
-            // Simulate API call (replace with real API)
-            await simulateApiCall({ name, email, phone, type, password });
+        // Wait for UX
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
-            // Store registration data (for demo)
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userName', name);
-            localStorage.setItem('userRole', type === 'court-owner' ? 'court-admin' : 'user');
-
-            // Success notification
-            showNotification('🎉 Conta criada com sucesso!', 'success');
-
-            // Redirect after 1.5 seconds
-            setTimeout(() => {
-                if (type === 'court-owner') {
-                    window.location.href = 'dashboard-court.html';
-                } else {
-                    window.location.href = 'dashboard-user.html';
-                }
-            }, 1500);
-
-        } catch (error) {
-            showNotification('❌ Erro ao criar conta. Tente novamente.', 'error');
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+        // Determine role based on type
+        let role = 'user';
+        if (type === 'court-owner') {
+            role = 'court-admin';
+        } else if (type === 'organizer') {
+            role = 'user'; // Organizers use user dashboard for now
         }
+
+        // Store registration data
+        isRedirecting = true;
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userRole', role);
+
+        // Success notification
+        showNotification('🎉 Conta criada com sucesso!', 'success');
+
+        // Redirect after 1.5 seconds
+        setTimeout(() => {
+            redirectToDashboard(role);
+        }, 1500);
     });
 }
 
@@ -138,58 +182,52 @@ if (registerForm) {
 quickBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
+
+        if (isRedirecting) return; // Prevent double click
+
         const role = btn.dataset.role;
 
         // Show loading
         btn.style.opacity = '0.5';
         btn.style.pointerEvents = 'none';
 
-        // Store demo login
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userRole', role);
-
-        // Set demo user data based on role
-        if (role === 'user') {
-            localStorage.setItem('userName', 'João Silva');
-            localStorage.setItem('userEmail', 'joao@demo.com');
+        // Set credentials based on role
+        let userData = {};
+        if (role === 'admin') {
+            userData = USERS['admin@peladafacil.com'];
         } else if (role === 'court-admin') {
-            localStorage.setItem('userName', 'Arena Sport Center');
-            localStorage.setItem('userEmail', 'arena@demo.com');
-        } else if (role === 'admin') {
-            localStorage.setItem('userName', 'Admin Master');
-            localStorage.setItem('userEmail', 'admin@peladafacil.com');
+            userData = USERS['quadra@demo.com'];
+        } else {
+            userData = USERS['jogador@demo.com'];
         }
 
-        showNotification(`✅ Entrando como ${btn.textContent.trim()}...`, 'success');
+        // Store demo login
+        isRedirecting = true;
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userRole', role);
+        localStorage.setItem('userName', userData.name);
+        localStorage.setItem('userEmail', Object.keys(USERS).find(email => USERS[email].role === role));
+
+        showNotification(`✅ Entrando como ${userData.name}...`, 'success');
 
         // Redirect based on role
         setTimeout(() => {
-            if (role === 'user') {
-                window.location.href = 'dashboard-user.html';
-            } else if (role === 'court-admin') {
-                window.location.href = 'dashboard-court.html';
-            } else if (role === 'admin') {
-                window.location.href = 'dashboard-admin.html';
-            }
+            redirectToDashboard(role);
         }, 800);
     });
 });
 
 // === UTILITY FUNCTIONS ===
 
-// Simulate API call
-function simulateApiCall(data) {
-    return new Promise((resolve, reject) => {
-        console.log('Auth data:', data);
-        setTimeout(() => {
-            // Simulate 90% success rate
-            if (Math.random() > 0.1) {
-                resolve({ success: true });
-            } else {
-                reject(new Error('API Error'));
-            }
-        }, 1500);
-    });
+// Redirect to appropriate dashboard
+function redirectToDashboard(role) {
+    if (role === 'admin') {
+        window.location.href = 'dashboard-admin.html';
+    } else if (role === 'court-admin') {
+        window.location.href = 'dashboard-court.html';
+    } else {
+        window.location.href = 'dashboard-user.html';
+    }
 }
 
 // Show notification
@@ -238,20 +276,24 @@ function showNotification(message, type = 'info') {
 }
 
 // === CHECK IF ALREADY LOGGED IN ===
+// Only redirect if not already in the process of redirecting
 window.addEventListener('DOMContentLoaded', () => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    const userRole = localStorage.getItem('userRole');
+    // Small delay to ensure page is fully loaded
+    setTimeout(() => {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        const userRole = localStorage.getItem('userRole');
 
-    // If on login page and already logged in, redirect to dashboard
-    if (isLoggedIn === 'true' && window.location.pathname.includes('login.html')) {
-        if (userRole === 'admin') {
-            window.location.href = 'dashboard-admin.html';
-        } else if (userRole === 'court-admin') {
-            window.location.href = 'dashboard-court.html';
-        } else {
-            window.location.href = 'dashboard-user.html';
+        // If on login page and already logged in, show message and redirect
+        if (isLoggedIn === 'true' && window.location.pathname.includes('login.html') && !isRedirecting) {
+            const userName = localStorage.getItem('userName') || 'Usuário';
+            showNotification(`👋 Você já está logado como ${userName}!`, 'info');
+
+            isRedirecting = true;
+            setTimeout(() => {
+                redirectToDashboard(userRole);
+            }, 1500);
         }
-    }
+    }, 100);
 });
 
 // === ANIMATIONS ===
@@ -283,4 +325,19 @@ document.head.appendChild(style);
 
 // === CONSOLE MESSAGE ===
 console.log('%c⚽ Pelada Fácil - Sistema de Autenticação', 'font-size: 16px; font-weight: bold; color: #00c853;');
-console.log('%cUse os botões de login rápido para testar diferentes perfis!', 'font-size: 12px; color: #0066ff;');
+console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #00c853;');
+console.log('%cCREDENCIAIS DE TESTE:', 'font-size: 14px; font-weight: bold; color: #0066ff;');
+console.log('%c', '');
+console.log('%c👑 SUPER ADMIN:', 'font-weight: bold; color: #ffd700;');
+console.log('%c   Email: admin@peladafacil.com', 'color: #999;');
+console.log('%c   Senha: admin123', 'color: #999;');
+console.log('%c', '');
+console.log('%c🏟️ DONO DE QUADRA:', 'font-weight: bold; color: #00c853;');
+console.log('%c   Email: quadra@demo.com', 'color: #999;');
+console.log('%c   Senha: quadra123', 'color: #999;');
+console.log('%c', '');
+console.log('%c👤 JOGADOR:', 'font-weight: bold; color: #0066ff;');
+console.log('%c   Email: jogador@demo.com', 'color: #999;');
+console.log('%c   Senha: jogador123', 'color: #999;');
+console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #00c853;');
+console.log('%cOu use os botões de login rápido! 🚀', 'font-size: 12px; color: #00c853;');
