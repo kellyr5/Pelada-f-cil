@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadras - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Gestão de Quadras</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar quadras...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filtrarQuadras('todas')">
+                    <i class="fas fa-list"></i> Todas (47)
+                </button>
+                <button class="filter-tab" onclick="filtrarQuadras('ativas')">
+                    <i class="fas fa-check-circle"></i> Ativas (38)
+                </button>
+                <button class="filter-tab" onclick="filtrarQuadras('inativas')">
+                    <i class="fas fa-times-circle"></i> Inativas (6)
+                </button>
+                <button class="filter-tab" onclick="filtrarQuadras('manutencao')">
+                    <i class="fas fa-wrench"></i> Manutenção (3)
+                </button>
+            </div>
+
+            <!-- Courts Grid -->
+            <div class="courts-grid">
+                <!-- Quadra 1 -->
+                <div class="court-card" data-status="ativa">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop" alt="Campo de Futebol" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="court-card__badge court-card__badge--featured">
+                            <i class="fas fa-star"></i> Destaque
+                        </span>
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Arena Champions League</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 4.8
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Moema, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-futbol"></i> Futebol</span>
+                            <span class="feature-tag"><i class="fas fa-lightbulb"></i> Iluminação</span>
+                            <span class="feature-tag"><i class="fas fa-parking"></i> Estacionamento</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 180/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>245 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-1')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--success" onclick="editarQuadra('quadra-1')">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quadra 2 -->
+                <div class="court-card" data-status="ativa">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400&h=300&fit=crop" alt="Quadra de Vôlei" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Beach Vôlei Paradise</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 4.7
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Vila Olímpia, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-volleyball-ball"></i> Vôlei</span>
+                            <span class="feature-tag"><i class="fas fa-umbrella-beach"></i> Areia</span>
+                            <span class="feature-tag"><i class="fas fa-beer"></i> Bar</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 120/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>189 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-2')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--success" onclick="editarQuadra('quadra-2')">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quadra 3 -->
+                <div class="court-card" data-status="ativa">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=300&fit=crop" alt="Quadra de Basquete" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Quadra Basketball Pro</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 4.9
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Pinheiros, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-basketball-ball"></i> Basquete</span>
+                            <span class="feature-tag"><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span class="feature-tag"><i class="fas fa-shower"></i> Vestiário</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 150/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>312 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-3')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--success" onclick="editarQuadra('quadra-3')">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quadra 4 -->
+                <div class="court-card" data-status="ativa">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?w=400&h=300&fit=crop" alt="Quadra de Tênis" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Tennis Club Premium</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 5.0
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Jardins, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-table-tennis"></i> Tênis</span>
+                            <span class="feature-tag"><i class="fas fa-trophy"></i> Profissional</span>
+                            <span class="feature-tag"><i class="fas fa-utensils"></i> Restaurante</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 200/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>428 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-4')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--success" onclick="editarQuadra('quadra-4')">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quadra 5 - Manutenção -->
+                <div class="court-card" data-status="manutencao">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=400&h=300&fit=crop" alt="Campo Society" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="court-card__badge" style="background: var(--accent-orange);">
+                            <i class="fas fa-wrench"></i> Manutenção
+                        </span>
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Society Park Center</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 4.6
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Itaim Bibi, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-futbol"></i> Society</span>
+                            <span class="feature-tag"><i class="fas fa-lightbulb"></i> LED</span>
+                            <span class="feature-tag"><i class="fas fa-shield-alt"></i> Segurança</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 160/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>156 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-5')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--warning" onclick="verHistorico('quadra-5')">
+                                <i class="fas fa-history"></i> Histórico
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quadra 6 - Inativa -->
+                <div class="court-card" data-status="inativa" style="opacity: 0.7;">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400&h=300&fit=crop" alt="Quadra Poliesportiva" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="court-card__badge" style="background: var(--accent-red);">
+                            <i class="fas fa-times-circle"></i> Inativa
+                        </span>
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Poliesportiva Central</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 4.3
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Vila Mariana, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-futbol"></i> Multi-esportes</span>
+                            <span class="feature-tag"><i class="fas fa-parking"></i> Estacionamento</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 140/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>87 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-6')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--success" onclick="reativarQuadra('quadra-6')">
+                                <i class="fas fa-check"></i> Reativar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quadra 7 -->
+                <div class="court-card" data-status="ativa">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=400&h=300&fit=crop" alt="Campo de Futebol" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Arena Master Futsal</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 4.8
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Perdizes, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-running"></i> Futsal</span>
+                            <span class="feature-tag"><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span class="feature-tag"><i class="fas fa-shower"></i> Duchas</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 175/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>298 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-7')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--success" onclick="editarQuadra('quadra-7')">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quadra 8 -->
+                <div class="court-card" data-status="ativa">
+                    <div class="court-card__image">
+                        <img src="https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=400&h=300&fit=crop" alt="Campo Society" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="court-card__badge court-card__badge--featured">
+                            <i class="fas fa-fire"></i> Popular
+                        </span>
+                    </div>
+                    <div class="court-card__content">
+                        <div class="court-card__header">
+                            <h3>Society Elite Sports</h3>
+                            <div class="court-rating">
+                                <i class="fas fa-star" style="color: #ffd700;"></i> 4.9
+                            </div>
+                        </div>
+                        <p class="court-location">
+                            <i class="fas fa-map-marker-alt"></i> Brooklin, São Paulo - SP
+                        </p>
+                        <div class="court-features">
+                            <span class="feature-tag"><i class="fas fa-futbol"></i> Society</span>
+                            <span class="feature-tag"><i class="fas fa-utensils"></i> Lanchonete</span>
+                            <span class="feature-tag"><i class="fas fa-parking"></i> Valet</span>
+                        </div>
+                        <div class="court-info">
+                            <div class="info-item">
+                                <i class="info-icon fas fa-dollar-sign"></i>
+                                <span>R$ 195/hora</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="info-icon fas fa-calendar-check"></i>
+                                <span>521 reservas</span>
+                            </div>
+                        </div>
+                        <div class="court-card__actions">
+                            <button class="btn btn--sm btn--secondary" onclick="verDetalhesQuadra('quadra-8')">
+                                <i class="fas fa-eye"></i> Detalhes
+                            </button>
+                            <button class="btn btn--sm btn--success" onclick="editarQuadra('quadra-8')">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function filtrarQuadras(status) {
+            const cards = document.querySelectorAll('.court-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+
+            cards.forEach(card => {
+                if (status === 'todas') {
+                    card.style.display = 'block';
+                } else if (card.dataset.status === status) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function verDetalhesQuadra(id) {
+            showNotification('Abrindo detalhes da quadra...', 'info');
+        }
+
+        function editarQuadra(id) {
+            showNotification('Abrindo editor de quadra...', 'info');
+        }
+
+        function verHistorico(id) {
+            showNotification('Carregando histórico da quadra...', 'info');
+        }
+
+        function reativarQuadra(id) {
+            if (confirm('Deseja reativar esta quadra?')) {
+                showNotification('Quadra reativada com sucesso!', 'success');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Relatórios e Analytics</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar relatórios...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Date Filter -->
+            <div class="section-card">
+                <div class="section-card__header">
+                    <h2><i class="fas fa-calendar-alt"></i> Período de Análise</h2>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button class="btn btn--sm btn--secondary" onclick="selecionarPeriodo('7dias')">
+                            Últimos 7 dias
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="selecionarPeriodo('30dias')">
+                            Últimos 30 dias
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="selecionarPeriodo('mes')">
+                            Este mês
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="selecionarPeriodo('custom')">
+                            <i class="fas fa-calendar"></i> Personalizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid stats-grid--four">
+                <div class="stat-card stat-card--green">
+                    <div class="stat-card__icon" style="color: var(--primary-green);">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">+342</div>
+                        <div class="stat-card__label">Novos Usuários</div>
+                        <div class="stat-card__trend stat-card__trend--up">
+                            <i class="fas fa-arrow-up"></i> +23% vs mês anterior
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card--blue">
+                    <div class="stat-card__icon" style="color: var(--accent-blue);">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">1.847</div>
+                        <div class="stat-card__label">Reservas Totais</div>
+                        <div class="stat-card__trend stat-card__trend--up">
+                            <i class="fas fa-arrow-up"></i> +18% vs mês anterior
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card--orange">
+                    <div class="stat-card__icon" style="color: var(--accent-orange);">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">78.5%</div>
+                        <div class="stat-card__label">Taxa de Conversão</div>
+                        <div class="stat-card__trend stat-card__trend--up">
+                            <i class="fas fa-arrow-up"></i> +5.2% vs mês anterior
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card--purple">
+                    <div class="stat-card__icon" style="color: #9c27b0;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <div class="stat-card__value">4.7</div>
+                        <div class="stat-card__label">Avaliação Média</div>
+                        <div class="stat-card__trend stat-card__trend--up">
+                            <i class="fas fa-arrow-up"></i> +0.3 vs mês anterior
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="grid-2-columns">
+                <!-- Chart 1 -->
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-chart-bar"></i> Reservas por Esporte</h2>
+                        <button class="btn btn--sm btn--secondary" onclick="exportarGrafico('esportes')">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+                    <div style="height: 300px; background: linear-gradient(135deg, rgba(0, 200, 83, 0.1) 0%, rgba(0, 102, 255, 0.1) 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; border: 2px dashed rgba(0, 200, 83, 0.3);">
+                        <div style="text-align: center;">
+                            <i class="fas fa-chart-pie" style="font-size: 4rem; color: var(--primary-green); opacity: 0.3; margin-bottom: 1rem;"></i>
+                            <p style="color: var(--light-grey);">Gráfico de Pizza - Chart.js</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart 2 -->
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-chart-line"></i> Crescimento de Usuários</h2>
+                        <button class="btn btn--sm btn--secondary" onclick="exportarGrafico('crescimento')">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+                    <div style="height: 300px; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(156, 39, 176, 0.1) 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; border: 2px dashed rgba(0, 102, 255, 0.3);">
+                        <div style="text-align: center;">
+                            <i class="fas fa-chart-area" style="font-size: 4rem; color: var(--accent-blue); opacity: 0.3; margin-bottom: 1rem;"></i>
+                            <p style="color: var(--light-grey);">Gráfico de Área - Chart.js</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Courts -->
+            <div class="section-card">
+                <div class="section-card__header">
+                    <h2><i class="fas fa-trophy"></i> Quadras Mais Reservadas</h2>
+                    <button class="btn btn--sm btn--secondary" onclick="exportarRelatorio('quadras')">
+                        <i class="fas fa-file-excel"></i> Exportar Excel
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Quadra</th>
+                                <th>Esporte</th>
+                                <th>Reservas</th>
+                                <th>Receita</th>
+                                <th>Avaliação</th>
+                                <th>Tendência</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-medal" style="color: #ffd700; font-size: 1.5rem;"></i></td>
+                                <td>
+                                    <div class="table-court">
+                                        <i class="table-icon fas fa-futbol" style="color: var(--primary-green);"></i>
+                                        <div>
+                                            <div class="table-name">Arena Champions League</div>
+                                            <div class="table-meta">Moema, São Paulo</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge--sport"><i class="fas fa-futbol"></i> Futebol</span></td>
+                                <td style="font-weight: 700;">521</td>
+                                <td style="font-weight: 700; color: var(--primary-green);">R$ 93.780</td>
+                                <td><i class="fas fa-star" style="color: #ffd700;"></i> 4.9</td>
+                                <td><span class="badge badge--success"><i class="fas fa-arrow-up"></i> +15%</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-medal" style="color: #c0c0c0; font-size: 1.5rem;"></i></td>
+                                <td>
+                                    <div class="table-court">
+                                        <i class="table-icon fas fa-table-tennis" style="color: var(--accent-blue);"></i>
+                                        <div>
+                                            <div class="table-name">Tennis Club Premium</div>
+                                            <div class="table-meta">Jardins, São Paulo</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge--sport"><i class="fas fa-table-tennis"></i> Tênis</span></td>
+                                <td style="font-weight: 700;">428</td>
+                                <td style="font-weight: 700; color: var(--primary-green);">R$ 85.600</td>
+                                <td><i class="fas fa-star" style="color: #ffd700;"></i> 5.0</td>
+                                <td><span class="badge badge--success"><i class="fas fa-arrow-up"></i> +12%</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-medal" style="color: #cd7f32; font-size: 1.5rem;"></i></td>
+                                <td>
+                                    <div class="table-court">
+                                        <i class="table-icon fas fa-basketball-ball" style="color: var(--accent-orange);"></i>
+                                        <div>
+                                            <div class="table-name">Quadra Basketball Pro</div>
+                                            <div class="table-meta">Pinheiros, São Paulo</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge--sport"><i class="fas fa-basketball-ball"></i> Basquete</span></td>
+                                <td style="font-weight: 700;">312</td>
+                                <td style="font-weight: 700; color: var(--primary-green);">R$ 46.800</td>
+                                <td><i class="fas fa-star" style="color: #ffd700;"></i> 4.9</td>
+                                <td><span class="badge badge--success"><i class="fas fa-arrow-up"></i> +8%</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    <div class="table-court">
+                                        <i class="table-icon fas fa-running" style="color: var(--primary-green);"></i>
+                                        <div>
+                                            <div class="table-name">Arena Master Futsal</div>
+                                            <div class="table-meta">Perdizes, São Paulo</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge--sport"><i class="fas fa-running"></i> Futsal</span></td>
+                                <td style="font-weight: 700;">298</td>
+                                <td style="font-weight: 700; color: var(--primary-green);">R$ 52.150</td>
+                                <td><i class="fas fa-star" style="color: #ffd700;"></i> 4.8</td>
+                                <td><span class="badge badge--success"><i class="fas fa-arrow-up"></i> +10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>
+                                    <div class="table-court">
+                                        <i class="table-icon fas fa-futbol" style="color: var(--primary-green);"></i>
+                                        <div>
+                                            <div class="table-name">Society Elite Sports</div>
+                                            <div class="table-meta">Brooklin, São Paulo</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge--sport"><i class="fas fa-futbol"></i> Society</span></td>
+                                <td style="font-weight: 700;">245</td>
+                                <td style="font-weight: 700; color: var(--primary-green);">R$ 47.775</td>
+                                <td><i class="fas fa-star" style="color: #ffd700;"></i> 4.7</td>
+                                <td><span class="badge badge--success"><i class="fas fa-arrow-up"></i> +6%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Export Reports -->
+            <div class="section-card">
+                <div class="section-card__header">
+                    <h2><i class="fas fa-download"></i> Exportar Relatórios Completos</h2>
+                </div>
+                <div class="quick-actions-grid">
+                    <button class="quick-action-btn" onclick="exportarRelatorio('usuarios')">
+                        <span class="quick-action-icon"><i class="fas fa-users"></i></span>
+                        <span>Relatório de Usuários</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="exportarRelatorio('quadras')">
+                        <span class="quick-action-icon"><i class="fas fa-building"></i></span>
+                        <span>Relatório de Quadras</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="exportarRelatorio('partidas')">
+                        <span class="quick-action-icon"><i class="fas fa-gamepad"></i></span>
+                        <span>Relatório de Partidas</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="exportarRelatorio('financeiro')">
+                        <span class="quick-action-icon"><i class="fas fa-dollar-sign"></i></span>
+                        <span>Relatório Financeiro</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="exportarRelatorio('avaliacoes')">
+                        <span class="quick-action-icon"><i class="fas fa-star"></i></span>
+                        <span>Relatório de Avaliações</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="exportarRelatorio('completo')">
+                        <span class="quick-action-icon"><i class="fas fa-file-pdf"></i></span>
+                        <span>Relatório Completo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function selecionarPeriodo(periodo) {
+            showNotification(`Período selecionado: ${periodo}`, 'info');
+        }
+
+        function exportarGrafico(tipo) {
+            showNotification(`Exportando gráfico de ${tipo}...`, 'info');
+        }
+
+        function exportarRelatorio(tipo) {
+            showNotification(`Gerando relatório de ${tipo}...`, 'success');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denúncias - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Gestão de Denúncias</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar denúncias...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filtrarDenuncias('todas')">
+                    <i class="fas fa-list"></i> Todas (28)
+                </button>
+                <button class="filter-tab" onclick="filtrarDenuncias('abertas')">
+                    <i class="fas fa-folder-open"></i> Abertas (8)
+                </button>
+                <button class="filter-tab" onclick="filtrarDenuncias('analise')">
+                    <i class="fas fa-search"></i> Em Análise (12)
+                </button>
+                <button class="filter-tab" onclick="filtrarDenuncias('resolvidas')">
+                    <i class="fas fa-check-circle"></i> Resolvidas (6)
+                </button>
+                <button class="filter-tab" onclick="filtrarDenuncias('arquivadas')">
+                    <i class="fas fa-archive"></i> Arquivadas (2)
+                </button>
+            </div>
+
+            <!-- Reports List -->
+            <div class="reports-list">
+                <!-- Report 1 - High Priority -->
+                <div class="report-item report-item--high" data-status="aberta">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--accent-red);">
+                                <i class="fas fa-exclamation-circle"></i> ALTA PRIORIDADE
+                            </span>
+                        </div>
+                        <span class="report-time">Há 2 horas</span>
+                    </div>
+                    <h4><i class="fas fa-flag"></i> Comportamento Agressivo em Partida</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=27" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Mariana Santos</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=41" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Lucas Ferreira</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Usuário apresentou comportamento agressivo durante a partida, ofendendo outros jogadores e ameaçando violência física. Incidente ocorreu na Arena Champions League.</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn btn--sm btn--danger" onclick="investigarDenuncia('report-1')">
+                            <i class="fas fa-search"></i> Investigar
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="resolverDenuncia('report-1')">
+                            <i class="fas fa-check"></i> Resolver
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="arquivarDenuncia('report-1')">
+                            <i class="fas fa-archive"></i> Arquivar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report 2 - Medium Priority -->
+                <div class="report-item report-item--medium" data-status="analise">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--accent-yellow);">
+                                <i class="fas fa-exclamation-triangle"></i> MÉDIA PRIORIDADE
+                            </span>
+                        </div>
+                        <span class="report-time">Há 5 horas</span>
+                    </div>
+                    <h4><i class="fas fa-user-times"></i> Não Comparecimento sem Aviso</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=15" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Roberto Silva</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=52" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">André Costa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Jogador confirmou presença na pelada mas não compareceu e não avisou o organizador. Esta é a terceira ocorrência deste tipo do mesmo usuário.</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn btn--sm btn--danger" onclick="investigarDenuncia('report-2')">
+                            <i class="fas fa-search"></i> Investigar
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="resolverDenuncia('report-2')">
+                            <i class="fas fa-check"></i> Resolver
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="arquivarDenuncia('report-2')">
+                            <i class="fas fa-archive"></i> Arquivar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report 3 - High Priority -->
+                <div class="report-item report-item--high" data-status="aberta">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--accent-red);">
+                                <i class="fas fa-exclamation-circle"></i> ALTA PRIORIDADE
+                            </span>
+                        </div>
+                        <span class="report-time">Há 1 dia</span>
+                    </div>
+                    <h4><i class="fas fa-credit-card"></i> Cobrança Indevida</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=68" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Felipe Rodrigues</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=58" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Pedro Oliveira (Dono)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Dono da quadra tentou cobrar valor adicional não informado previamente na reserva. Usuário foi surpreendido com cobrança de R$ 50,00 extras por "iluminação".</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn btn--sm btn--danger" onclick="investigarDenuncia('report-3')">
+                            <i class="fas fa-search"></i> Investigar
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="resolverDenuncia('report-3')">
+                            <i class="fas fa-check"></i> Resolver
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="arquivarDenuncia('report-3')">
+                            <i class="fas fa-archive"></i> Arquivar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report 4 - Low Priority -->
+                <div class="report-item report-item--low" data-status="analise">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--accent-blue);">
+                                <i class="fas fa-info-circle"></i> BAIXA PRIORIDADE
+                            </span>
+                        </div>
+                        <span class="report-time">Há 2 dias</span>
+                    </div>
+                    <h4><i class="fas fa-comment-slash"></i> Spam em Comentários</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=33" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Ana Paula Costa</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=70" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">João Pereira</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Usuário postando repetidamente links promocionais não autorizados nos comentários de partidas e quadras.</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn btn--sm btn--danger" onclick="investigarDenuncia('report-4')">
+                            <i class="fas fa-search"></i> Investigar
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="resolverDenuncia('report-4')">
+                            <i class="fas fa-check"></i> Resolver
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="arquivarDenuncia('report-4')">
+                            <i class="fas fa-archive"></i> Arquivar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report 5 - Medium Priority -->
+                <div class="report-item report-item--medium" data-status="resolvida">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--primary-green);">
+                                <i class="fas fa-check-circle"></i> RESOLVIDA
+                            </span>
+                        </div>
+                        <span class="report-time">Há 3 dias</span>
+                    </div>
+                    <h4><i class="fas fa-wrench"></i> Problemas com Infraestrutura</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=12" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Carlos Mendes</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <i class="fas fa-building" style="font-size: 1.5rem; color: var(--primary-green); width: 32px; text-align: center;"></i>
+                                <span style="font-weight: 600;">Beach Vôlei Paradise</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Vestiários estavam sujos e sem funcionamento. Problema foi resolvido - quadra realizou manutenção completa e usuário recebeu reembolso parcial.</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <span class="badge badge--success"><i class="fas fa-check"></i> Resolvida em 12/12/2024</span>
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesResolucao('report-5')">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report 6 - Low Priority -->
+                <div class="report-item report-item--low" data-status="analise">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--accent-blue);">
+                                <i class="fas fa-info-circle"></i> BAIXA PRIORIDADE
+                            </span>
+                        </div>
+                        <span class="report-time">Há 4 dias</span>
+                    </div>
+                    <h4><i class="fas fa-image"></i> Fotos Inadequadas de Perfil</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=22" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Juliana Alves</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=45" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Marcos Silva</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Foto de perfil contém conteúdo potencialmente ofensivo. Análise necessária para determinar violação dos termos de uso.</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn btn--sm btn--danger" onclick="investigarDenuncia('report-6')">
+                            <i class="fas fa-search"></i> Investigar
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="resolverDenuncia('report-6')">
+                            <i class="fas fa-check"></i> Resolver
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="arquivarDenuncia('report-6')">
+                            <i class="fas fa-archive"></i> Arquivar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report 7 - Archived -->
+                <div class="report-item report-item--low" data-status="arquivada" style="opacity: 0.6;">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--light-grey);">
+                                <i class="fas fa-archive"></i> ARQUIVADA
+                            </span>
+                        </div>
+                        <span class="report-time">Há 7 dias</span>
+                    </div>
+                    <h4><i class="fas fa-question-circle"></i> Denúncia Sem Fundamento</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=35" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Ricardo Santos</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=18" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Paula Mendes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Após investigação, foi determinado que a denúncia não tinha fundamento. Arquivada sem ação necessária.</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <span class="badge badge--info"><i class="fas fa-archive"></i> Arquivada</span>
+                    </div>
+                </div>
+
+                <!-- Report 8 - Medium Priority -->
+                <div class="report-item report-item--medium" data-status="aberta">
+                    <div class="report-header">
+                        <div>
+                            <span class="report-priority" style="color: var(--accent-yellow);">
+                                <i class="fas fa-exclamation-triangle"></i> MÉDIA PRIORIDADE
+                            </span>
+                        </div>
+                        <span class="report-time">Há 5 dias</span>
+                    </div>
+                    <h4><i class="fas fa-users"></i> Criação de Contas Falsas</h4>
+                    <div style="display: flex; gap: 2rem; margin: 0.75rem 0;">
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciante:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=27" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Mariana Santos</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0;">Denunciado:</p>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <img src="https://i.pravatar.cc/300?img=60" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%;">
+                                <span style="font-weight: 600;">Múltiplas Contas Suspeitas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Suspeita de usuário criando múltiplas contas falsas para manipular avaliações de quadras. Padrões de comportamento similares detectados.</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn btn--sm btn--danger" onclick="investigarDenuncia('report-8')">
+                            <i class="fas fa-search"></i> Investigar
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="resolverDenuncia('report-8')">
+                            <i class="fas fa-check"></i> Resolver
+                        </button>
+                        <button class="btn btn--sm btn--secondary" onclick="arquivarDenuncia('report-8')">
+                            <i class="fas fa-archive"></i> Arquivar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function filtrarDenuncias(status) {
+            const items = document.querySelectorAll('.report-item');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+
+            items.forEach(item => {
+                if (status === 'todas') {
+                    item.style.display = 'block';
+                } else if (item.dataset.status === status) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function investigarDenuncia(id) {
+            showNotification(`Iniciando investigação da denúncia ${id}...`, 'info');
+        }
+
+        function resolverDenuncia(id) {
+            if (confirm('Confirma que esta denúncia foi resolvida?')) {
+                showNotification('Denúncia marcada como resolvida!', 'success');
+            }
+        }
+
+        function arquivarDenuncia(id) {
+            if (confirm('Deseja arquivar esta denúncia?')) {
+                showNotification('Denúncia arquivada com sucesso!', 'info');
+            }
+        }
+
+        function verDetalhesResolucao(id) {
+            showNotification('Abrindo detalhes da resolução...', 'info');
+        }
+    </script>
+</body>
+</html>

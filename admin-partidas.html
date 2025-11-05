@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partidas - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Gestão de Partidas</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar partidas...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filtrarPartidas('todas')">
+                    <i class="fas fa-list"></i> Todas (342)
+                </button>
+                <button class="filter-tab" onclick="filtrarPartidas('agendadas')">
+                    <i class="fas fa-clock"></i> Agendadas (87)
+                </button>
+                <button class="filter-tab" onclick="filtrarPartidas('andamento')">
+                    <i class="fas fa-play-circle"></i> Em Andamento (12)
+                </button>
+                <button class="filter-tab" onclick="filtrarPartidas('finalizadas')">
+                    <i class="fas fa-check-circle"></i> Finalizadas (238)
+                </button>
+                <button class="filter-tab" onclick="filtrarPartidas('canceladas')">
+                    <i class="fas fa-ban"></i> Canceladas (5)
+                </button>
+            </div>
+
+            <!-- Matches Grid -->
+            <div class="matches-grid">
+                <!-- Match 1 -->
+                <div class="match-card" data-status="agendada">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="match-card__badge match-card__badge--pending">
+                            <i class="fas fa-clock"></i> Agendada
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">15</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Pelada dos Amigos</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Arena Champions League
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 20:00 - 21:00
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.75rem;">
+                            <i class="fas fa-users"></i> 12/14 jogadores
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-1')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="gerenciarPartida('match-1')">
+                            <i class="fas fa-cog"></i> Gerenciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match 2 -->
+                <div class="match-card" data-status="andamento">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="match-card__badge match-card__badge--confirmed">
+                            <i class="fas fa-play-circle"></i> Em Andamento
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">12</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Vôlei de Praia Noturno</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Beach Vôlei Paradise
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 19:30 - 20:30
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.75rem;">
+                            <i class="fas fa-users"></i> 8/8 jogadores
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-2')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="gerenciarPartida('match-2')">
+                            <i class="fas fa-cog"></i> Gerenciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match 3 -->
+                <div class="match-card" data-status="agendada">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="match-card__badge match-card__badge--pending">
+                            <i class="fas fa-clock"></i> Agendada
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">18</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Basquete 3x3</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Quadra Basketball Pro
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 18:00 - 19:00
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.75rem;">
+                            <i class="fas fa-users"></i> 6/6 jogadores
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-3')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="gerenciarPartida('match-3')">
+                            <i class="fas fa-cog"></i> Gerenciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match 4 -->
+                <div class="match-card" data-status="finalizada">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="match-card__badge" style="background: rgba(0, 200, 83, 0.9);">
+                            <i class="fas fa-check-circle"></i> Finalizada
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">10</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Tênis Duplas Masters</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Tennis Club Premium
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 16:00 - 17:30
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.75rem;">
+                            <i class="fas fa-users"></i> 4/4 jogadores
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-4')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="gerenciarPartida('match-4')">
+                            <i class="fas fa-trophy"></i> Resultados
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match 5 - Cancelada -->
+                <div class="match-card" data-status="cancelada" style="opacity: 0.7;">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%);">
+                        <span class="match-card__badge" style="background: var(--accent-red);">
+                            <i class="fas fa-ban"></i> Cancelada
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">11</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Racha Society Tarde</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Society Park Center
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 15:00 - 16:00
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--accent-red); margin-bottom: 0.75rem;">
+                            <i class="fas fa-exclamation-triangle"></i> Cancelada por chuva
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-5')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--danger" onclick="verMotivoCancelamento('match-5')">
+                            <i class="fas fa-info-circle"></i> Motivo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match 6 -->
+                <div class="match-card" data-status="agendada">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="match-card__badge match-card__badge--pending">
+                            <i class="fas fa-clock"></i> Agendada
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">20</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Futsal Corporativo</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Arena Master Futsal
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 12:00 - 13:00
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.75rem;">
+                            <i class="fas fa-users"></i> 10/10 jogadores
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-6')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="gerenciarPartida('match-6')">
+                            <i class="fas fa-cog"></i> Gerenciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match 7 -->
+                <div class="match-card" data-status="agendada">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="match-card__badge match-card__badge--pending">
+                            <i class="fas fa-clock"></i> Agendada
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">22</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Pelada de Sexta</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Society Elite Sports
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 21:00 - 22:00
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.75rem;">
+                            <i class="fas fa-users"></i> 14/14 jogadores
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-7')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="gerenciarPartida('match-7')">
+                            <i class="fas fa-cog"></i> Gerenciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match 8 -->
+                <div class="match-card" data-status="finalizada">
+                    <div style="grid-column: 1 / -1; position: relative; height: 180px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=180&fit=crop" alt="Partida" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="match-card__badge" style="background: rgba(0, 200, 83, 0.9);">
+                            <i class="fas fa-check-circle"></i> Finalizada
+                        </span>
+                    </div>
+                    <div class="match-card__date">
+                        <div class="date-day">08</div>
+                        <div class="date-month">DEZ</div>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Torneio Relámpago</h3>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-building"></i> Arena Champions League
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.25rem;">
+                            <i class="fas fa-clock"></i> 10:00 - 14:00
+                        </p>
+                        <p style="font-size: 0.875rem; color: var(--light-grey); margin-bottom: 0.75rem;">
+                            <i class="fas fa-users"></i> 32/32 jogadores
+                        </p>
+                    </div>
+                    <div class="match-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verDetalhesPartida('match-8')">
+                            <i class="fas fa-eye"></i> Detalhes
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="gerenciarPartida('match-8')">
+                            <i class="fas fa-trophy"></i> Resultados
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function filtrarPartidas(status) {
+            const cards = document.querySelectorAll('.match-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+
+            cards.forEach(card => {
+                if (status === 'todas') {
+                    card.style.display = 'grid';
+                } else if (card.dataset.status === status) {
+                    card.style.display = 'grid';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function verDetalhesPartida(id) {
+            showNotification('Abrindo detalhes da partida...', 'info');
+        }
+
+        function gerenciarPartida(id) {
+            showNotification('Gerenciando partida...', 'info');
+        }
+
+        function cancelarPartida(id) {
+            if (confirm('Deseja cancelar esta partida?')) {
+                showNotification('Partida cancelada com sucesso!', 'success');
+            }
+        }
+
+        function verMotivoCancelamento(id) {
+            alert('Motivo: Condições climáticas desfavoráveis (chuva forte)');
+        }
+    </script>
+</body>
+</html>

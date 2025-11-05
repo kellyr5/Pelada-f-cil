@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Configurações do Sistema</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar configurações...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="mostrarSecao('geral')">
+                    <i class="fas fa-cog"></i> Geral
+                </button>
+                <button class="filter-tab" onclick="mostrarSecao('pagamentos')">
+                    <i class="fas fa-credit-card"></i> Pagamentos
+                </button>
+                <button class="filter-tab" onclick="mostrarSecao('email')">
+                    <i class="fas fa-envelope"></i> E-mail
+                </button>
+                <button class="filter-tab" onclick="mostrarSecao('seguranca')">
+                    <i class="fas fa-shield-alt"></i> Segurança
+                </button>
+                <button class="filter-tab" onclick="mostrarSecao('api')">
+                    <i class="fas fa-code"></i> API
+                </button>
+            </div>
+
+            <!-- Geral Section -->
+            <div id="secao-geral" class="config-section">
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-info-circle"></i> Informações da Plataforma</h2>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-tag"></i> Nome da Plataforma</label>
+                        <input type="text" class="form-control" value="Pelada Fácil" placeholder="Nome da plataforma">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-align-left"></i> Descrição</label>
+                        <textarea class="form-control" rows="3" placeholder="Descrição da plataforma">A melhor plataforma para organizar suas partidas e reservar quadras esportivas.</textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> E-mail de Contato</label>
+                            <input type="email" class="form-control" value="contato@peladafacil.com.br" placeholder="email@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-phone"></i> Telefone</label>
+                            <input type="tel" class="form-control" value="(11) 99999-9999" placeholder="(00) 00000-0000">
+                        </div>
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--secondary" onclick="cancelarAlteracoes()">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('geral')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-sliders-h"></i> Configurações Gerais</h2>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Modo Manutenção</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Bloqueia o acesso de usuários não-admin ao sistema
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Registro de Novos Usuários</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Permite que novos usuários se cadastrem na plataforma
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Aprovação Manual de Quadras</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Requer aprovação admin para novas quadras
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-percentage"></i> Taxa de Comissão (%)</label>
+                        <input type="number" class="form-control" value="15" min="0" max="100" step="0.5">
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--secondary" onclick="cancelarAlteracoes()">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('geral')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagamentos Section -->
+            <div id="secao-pagamentos" class="config-section" style="display: none;">
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-credit-card"></i> Métodos de Pagamento</h2>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Cartão de Crédito/Débito</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Aceitar pagamentos via cartão
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>PIX</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Aceitar pagamentos via PIX
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Boleto Bancário</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Aceitar pagamentos via boleto
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-plug"></i> Integração Gateway de Pagamento</h2>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-server"></i> Gateway Ativo</label>
+                        <select class="form-control">
+                            <option value="stripe">Stripe</option>
+                            <option value="mercadopago" selected>Mercado Pago</option>
+                            <option value="pagseguro">PagSeguro</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> Chave API (Public Key)</label>
+                        <input type="text" class="form-control" value="pk_live_xxxxxxxxxxxxxxxxxxxx" placeholder="Chave pública da API">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Chave Secreta (Secret Key)</label>
+                        <input type="password" class="form-control" value="sk_live_xxxxxxxxxxxxxxxxxxxx" placeholder="Chave secreta da API">
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--secondary" onclick="testarConexao()">
+                            <i class="fas fa-vial"></i> Testar Conexão
+                        </button>
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('pagamentos')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Section -->
+            <div id="secao-email" class="config-section" style="display: none;">
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-server"></i> Servidor SMTP</h2>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-server"></i> Host SMTP</label>
+                            <input type="text" class="form-control" value="smtp.gmail.com" placeholder="smtp.exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-plug"></i> Porta</label>
+                            <input type="number" class="form-control" value="587" placeholder="587">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Usuário</label>
+                            <input type="text" class="form-control" value="noreply@peladafacil.com.br" placeholder="usuario@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-key"></i> Senha</label>
+                            <input type="password" class="form-control" value="****************" placeholder="Senha do e-mail">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <span>Usar TLS/SSL</span>
+                        </label>
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--secondary" onclick="enviarEmailTeste()">
+                            <i class="fas fa-paper-plane"></i> Enviar E-mail de Teste
+                        </button>
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('email')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-envelope-open-text"></i> Templates de E-mail</h2>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>E-mail de Boas-Vindas</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Enviado quando um novo usuário se cadastra
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Confirmação de Reserva</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Enviado quando uma reserva é confirmada
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Lembrete de Partida</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Enviado 24h antes da partida
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('email')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segurança Section -->
+            <div id="secao-seguranca" class="config-section" style="display: none;">
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-lock"></i> Políticas de Segurança</h2>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> Tamanho Mínimo da Senha</label>
+                        <input type="number" class="form-control" value="8" min="6" max="20">
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Exigir Caracteres Especiais</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Senha deve conter pelo menos um caractere especial
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Exigir Números</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Senha deve conter pelo menos um número
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Autenticação em Dois Fatores (2FA)</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Ativar 2FA para todos os administradores
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-clock"></i> Tempo de Sessão (minutos)</label>
+                        <input type="number" class="form-control" value="60" min="15" max="480">
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('seguranca')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-history"></i> Logs e Auditoria</h2>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Registrar Atividades de Admin</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Manter log de todas as ações administrativas
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Registrar Tentativas de Login</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Manter log de tentativas de login (sucesso e falhas)
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar"></i> Tempo de Retenção de Logs (dias)</label>
+                        <input type="number" class="form-control" value="90" min="30" max="365">
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <button class="btn btn--secondary" onclick="verLogs()">
+                            <i class="fas fa-eye"></i> Ver Logs do Sistema
+                        </button>
+                        <button class="btn btn--danger" onclick="limparLogs()">
+                            <i class="fas fa-trash"></i> Limpar Logs Antigos
+                        </button>
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('seguranca')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Section -->
+            <div id="secao-api" class="config-section" style="display: none;">
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-code"></i> Configurações da API</h2>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>API REST Habilitada</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Permite acesso à API REST do sistema
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-link"></i> URL Base da API</label>
+                        <input type="text" class="form-control" value="https://api.peladafacil.com.br/v1" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-tachometer-alt"></i> Rate Limit (requisições/minuto)</label>
+                        <input type="number" class="form-control" value="100" min="10" max="1000">
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-key"></i> Chaves de API</h2>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="padding: 1rem; background: rgba(10, 14, 39, 0.6); border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <strong>Chave Principal</strong>
+                                <span class="badge badge--success"><i class="fas fa-check"></i> Ativa</span>
+                            </div>
+                            <code style="font-family: monospace; font-size: 0.875rem; color: var(--primary-green);">
+                                pk_live_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
+                            </code>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                                <button class="btn btn--sm btn--secondary" onclick="copiarChave('pk_live_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6')">
+                                    <i class="fas fa-copy"></i> Copiar
+                                </button>
+                                <button class="btn btn--sm btn--danger" onclick="revogarChave('principal')">
+                                    <i class="fas fa-ban"></i> Revogar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="padding: 1rem; background: rgba(10, 14, 39, 0.6); border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <strong>Chave de Teste</strong>
+                                <span class="badge badge--info"><i class="fas fa-vial"></i> Sandbox</span>
+                            </div>
+                            <code style="font-family: monospace; font-size: 0.875rem; color: var(--accent-blue);">
+                                pk_test_q6r7s8t9u0v1w2x3y4z5a6b7c8d9e0f1
+                            </code>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                                <button class="btn btn--sm btn--secondary" onclick="copiarChave('pk_test_q6r7s8t9u0v1w2x3y4z5a6b7c8d9e0f1')">
+                                    <i class="fas fa-copy"></i> Copiar
+                                </button>
+                                <button class="btn btn--sm btn--danger" onclick="revogarChave('teste')">
+                                    <i class="fas fa-ban"></i> Revogar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <button class="btn btn--success" onclick="gerarNovaChave()">
+                            <i class="fas fa-plus"></i> Gerar Nova Chave
+                        </button>
+                        <button class="btn btn--secondary" onclick="verDocumentacaoAPI()">
+                            <i class="fas fa-book"></i> Ver Documentação da API
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card__header">
+                        <h2><i class="fas fa-puzzle-piece"></i> Integrações Externas</h2>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Google Maps API</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Exibir localização de quadras em mapas
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Firebase Cloud Messaging</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Enviar notificações push para apps mobile
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 1rem;">
+                            <input type="checkbox">
+                            <div>
+                                <strong>Google Analytics</strong>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--light-grey); font-weight: 400;">
+                                    Rastreamento e analytics de uso
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="section-card__footer">
+                        <button class="btn btn--success" onclick="salvarConfiguracoes('api')">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function mostrarSecao(secao) {
+            // Ocultar todas as seções
+            document.querySelectorAll('.config-section').forEach(s => s.style.display = 'none');
+
+            // Mostrar seção selecionada
+            document.getElementById('secao-' + secao).style.display = 'block';
+
+            // Atualizar tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+        }
+
+        function salvarConfiguracoes(secao) {
+            showNotification(`Configurações de ${secao} salvas com sucesso!`, 'success');
+        }
+
+        function cancelarAlteracoes() {
+            if (confirm('Descartar alterações não salvas?')) {
+                showNotification('Alterações descartadas', 'info');
+            }
+        }
+
+        function testarConexao() {
+            showNotification('Testando conexão com gateway de pagamento...', 'info');
+            setTimeout(() => {
+                showNotification('Conexão estabelecida com sucesso!', 'success');
+            }, 2000);
+        }
+
+        function enviarEmailTeste() {
+            const email = prompt('Digite o e-mail de destino:');
+            if (email) {
+                showNotification(`E-mail de teste enviado para ${email}`, 'success');
+            }
+        }
+
+        function verLogs() {
+            showNotification('Carregando logs do sistema...', 'info');
+        }
+
+        function limparLogs() {
+            if (confirm('Deseja limpar todos os logs antigos?')) {
+                showNotification('Logs antigos removidos com sucesso!', 'success');
+            }
+        }
+
+        function copiarChave(chave) {
+            navigator.clipboard.writeText(chave);
+            showNotification('Chave copiada para a área de transferência!', 'success');
+        }
+
+        function revogarChave(tipo) {
+            if (confirm(`Deseja revogar a chave ${tipo}? Esta ação não pode ser desfeita.`)) {
+                showNotification(`Chave ${tipo} revogada com sucesso!`, 'success');
+            }
+        }
+
+        function gerarNovaChave() {
+            if (confirm('Gerar nova chave de API?')) {
+                showNotification('Nova chave gerada com sucesso!', 'success');
+            }
+        }
+
+        function verDocumentacaoAPI() {
+            showNotification('Abrindo documentação da API...', 'info');
+        }
+    </script>
+</body>
+</html>

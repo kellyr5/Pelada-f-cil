@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovações - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Aprovações Pendentes</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar aprovações...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filtrarAprovacoes('todas')">
+                    <i class="fas fa-list"></i> Todas (12)
+                </button>
+                <button class="filter-tab" onclick="filtrarAprovacoes('quadras')">
+                    <i class="fas fa-building"></i> Quadras (8)
+                </button>
+                <button class="filter-tab" onclick="filtrarAprovacoes('usuarios')">
+                    <i class="fas fa-user"></i> Usuários (3)
+                </button>
+                <button class="filter-tab" onclick="filtrarAprovacoes('eventos')">
+                    <i class="fas fa-calendar"></i> Eventos (1)
+                </button>
+            </div>
+
+            <!-- Pending Approvals Grid -->
+            <div class="approval-full-grid">
+                <!-- Quadra 1 -->
+                <div class="approval-card-full" data-id="quadra-1" data-type="quadra">
+                    <div class="approval-card-full__images">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Campo de Futebol" class="approval-main-img">
+                        <div class="approval-thumb-grid">
+                            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=150&h=100&fit=crop" alt="Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=150&h=100&fit=crop" alt="Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=150&h=100&fit=crop" alt="Thumbnail">
+                        </div>
+                    </div>
+                    <div class="approval-card-full__content">
+                        <div class="approval-header-full">
+                            <div>
+                                <span class="approval-badge approval-badge--new">Nova Quadra</span>
+                                <h3>Arena Champions League</h3>
+                            </div>
+                            <div class="approval-time">Há 2 horas</div>
+                        </div>
+
+                        <div class="approval-details-grid">
+                            <div class="detail-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <label>Localização</label>
+                                    <p>Av. Moema, 1234 - Moema, São Paulo - SP</p>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-user"></i>
+                                <div>
+                                    <label>Responsável</label>
+                                    <p>Roberto Silva</p>
+                                    <small>roberto.silva@email.com | (11) 99999-9999</small>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div>
+                                    <label>Preço por Hora</label>
+                                    <p>R$ 180,00</p>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <label>Horário de Funcionamento</label>
+                                    <p>Seg-Sex: 07:00-23:00 | Sáb-Dom: 06:00-00:00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="approval-features-full">
+                            <h4><i class="fas fa-list-check"></i> Comodidades e Esportes</h4>
+                            <div class="features-tags">
+                                <span class="feature-tag"><i class="fas fa-futbol"></i> Futebol Society</span>
+                                <span class="feature-tag"><i class="fas fa-running"></i> Futsal</span>
+                                <span class="feature-tag"><i class="fas fa-lightbulb"></i> Iluminação LED</span>
+                                <span class="feature-tag"><i class="fas fa-shower"></i> Vestiários</span>
+                                <span class="feature-tag"><i class="fas fa-parking"></i> Estacionamento</span>
+                                <span class="feature-tag"><i class="fas fa-wifi"></i> Wi-Fi Grátis</span>
+                                <span class="feature-tag"><i class="fas fa-utensils"></i> Lanchonete</span>
+                                <span class="feature-tag"><i class="fas fa-shield-alt"></i> Segurança 24h</span>
+                            </div>
+                        </div>
+
+                        <div class="approval-description">
+                            <h4><i class="fas fa-align-left"></i> Descrição</h4>
+                            <p>Campo de futebol society profissional com grama sintética de última geração. Estrutura completa com vestiários, arquibancada para 200 pessoas, lanchonete e estacionamento privativo. Ideal para peladas, campeonatos e eventos corporativos.</p>
+                        </div>
+                    </div>
+                    <div class="approval-card-full__actions">
+                        <button class="btn btn--danger" onclick="rejeitarQuadra('quadra-1', 'Arena Champions League')">
+                            <i class="fas fa-times"></i> Rejeitar
+                        </button>
+                        <button class="btn btn--secondary" onclick="solicitarMaisInfo('quadra-1')">
+                            <i class="fas fa-question-circle"></i> Mais Informações
+                        </button>
+                        <button class="btn btn--success" onclick="aprovarQuadra('quadra-1', 'Arena Champions League')">
+                            <i class="fas fa-check"></i> Aprovar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quadra 2 -->
+                <div class="approval-card-full" data-id="quadra-2" data-type="quadra">
+                    <div class="approval-card-full__images">
+                        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600&h=400&fit=crop" alt="Quadra de Vôlei" class="approval-main-img">
+                        <div class="approval-thumb-grid">
+                            <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=150&h=100&fit=crop" alt="Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1593786481097-d0ca6c53d4c5?w=150&h=100&fit=crop" alt="Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=150&h=100&fit=crop" alt="Thumbnail">
+                        </div>
+                    </div>
+                    <div class="approval-card-full__content">
+                        <div class="approval-header-full">
+                            <div>
+                                <span class="approval-badge approval-badge--new">Nova Quadra</span>
+                                <h3>Beach Vôlei Paradise</h3>
+                            </div>
+                            <div class="approval-time">Há 5 horas</div>
+                        </div>
+
+                        <div class="approval-details-grid">
+                            <div class="detail-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <label>Localização</label>
+                                    <p>Rua Olimpíadas, 890 - Vila Olímpia, São Paulo - SP</p>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-user"></i>
+                                <div>
+                                    <label>Responsável</label>
+                                    <p>Ana Paula Costa</p>
+                                    <small>ana.costa@email.com | (11) 98888-8888</small>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div>
+                                    <label>Preço por Hora</label>
+                                    <p>R$ 120,00</p>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <label>Horário de Funcionamento</label>
+                                    <p>Todos os dias: 08:00-22:00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="approval-features-full">
+                            <h4><i class="fas fa-list-check"></i> Comodidades e Esportes</h4>
+                            <div class="features-tags">
+                                <span class="feature-tag"><i class="fas fa-volleyball-ball"></i> Vôlei de Praia</span>
+                                <span class="feature-tag"><i class="fas fa-umbrella-beach"></i> Areia Importada</span>
+                                <span class="feature-tag"><i class="fas fa-sun"></i> Área Aberta</span>
+                                <span class="feature-tag"><i class="fas fa-shower"></i> Duchas</span>
+                                <span class="feature-tag"><i class="fas fa-beer"></i> Bar</span>
+                                <span class="feature-tag"><i class="fas fa-music"></i> Som Ambiente</span>
+                            </div>
+                        </div>
+
+                        <div class="approval-description">
+                            <h4><i class="fas fa-align-left"></i> Descrição</h4>
+                            <p>Quadra de vôlei de praia profissional com areia importada. Ambiente descontraído perfeito para treinos e lazer. Conta com bar, duchas e área de convivência. Vista panorâmica da cidade.</p>
+                        </div>
+                    </div>
+                    <div class="approval-card-full__actions">
+                        <button class="btn btn--danger" onclick="rejeitarQuadra('quadra-2', 'Beach Vôlei Paradise')">
+                            <i class="fas fa-times"></i> Rejeitar
+                        </button>
+                        <button class="btn btn--secondary" onclick="solicitarMaisInfo('quadra-2')">
+                            <i class="fas fa-question-circle"></i> Mais Informações
+                        </button>
+                        <button class="btn btn--success" onclick="aprovarQuadra('quadra-2', 'Beach Vôlei Paradise')">
+                            <i class="fas fa-check"></i> Aprovar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Usuário Novo -->
+                <div class="approval-card-full" data-id="user-1" data-type="usuario">
+                    <div class="approval-card-full__images">
+                        <div class="user-approval-header">
+                            <img src="https://i.pravatar.cc/300?img=12" alt="Foto do Usuário" class="user-approval-avatar">
+                            <div class="user-approval-info">
+                                <span class="approval-badge approval-badge--user">Novo Usuário</span>
+                                <h3>Carlos Eduardo Mendes</h3>
+                                <p class="user-email"><i class="fas fa-envelope"></i> carlos.mendes@email.com</p>
+                                <p class="user-phone"><i class="fas fa-phone"></i> (11) 97777-7777</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="approval-card-full__content">
+                        <div class="approval-details-grid">
+                            <div class="detail-box">
+                                <i class="fas fa-calendar"></i>
+                                <div>
+                                    <label>Data de Cadastro</label>
+                                    <p>15 de Dezembro de 2024</p>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-user-tag"></i>
+                                <div>
+                                    <label>Tipo de Conta</label>
+                                    <p>Dono de Quadra</p>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <label>Cidade</label>
+                                    <p>São Paulo - SP</p>
+                                </div>
+                            </div>
+                            <div class="detail-box">
+                                <i class="fas fa-id-card"></i>
+                                <div>
+                                    <label>CPF/CNPJ</label>
+                                    <p>12.345.678/0001-90</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="approval-description">
+                            <h4><i class="fas fa-file-alt"></i> Informações Adicionais</h4>
+                            <p>Empresário no ramo esportivo há 10 anos. Possui 2 quadras em São Paulo e deseja expandir seus negócios através da plataforma. Referências comerciais verificadas.</p>
+                        </div>
+
+                        <div class="approval-documents">
+                            <h4><i class="fas fa-paperclip"></i> Documentos Enviados</h4>
+                            <div class="document-list">
+                                <div class="document-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>RG/CNH - Frente e Verso.pdf</span>
+                                    <button class="btn-icon" onclick="visualizarDocumento('doc1')"><i class="fas fa-eye"></i></button>
+                                </div>
+                                <div class="document-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Comprovante de Residência.pdf</span>
+                                    <button class="btn-icon" onclick="visualizarDocumento('doc2')"><i class="fas fa-eye"></i></button>
+                                </div>
+                                <div class="document-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Contrato Social da Empresa.pdf</span>
+                                    <button class="btn-icon" onclick="visualizarDocumento('doc3')"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="approval-card-full__actions">
+                        <button class="btn btn--danger" onclick="rejeitarUsuario('user-1', 'Carlos Eduardo Mendes')">
+                            <i class="fas fa-times"></i> Rejeitar
+                        </button>
+                        <button class="btn btn--secondary" onclick="enviarMensagem('carlos.mendes@email.com')">
+                            <i class="fas fa-envelope"></i> Enviar Mensagem
+                        </button>
+                        <button class="btn btn--success" onclick="aprovarUsuario('user-1', 'Carlos Eduardo Mendes')">
+                            <i class="fas fa-check"></i> Aprovar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function filtrarAprovacoes(tipo) {
+            const cards = document.querySelectorAll('.approval-card-full');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+
+            cards.forEach(card => {
+                if (tipo === 'todas') {
+                    card.style.display = 'grid';
+                } else if (tipo === 'quadras' && card.dataset.type === 'quadra') {
+                    card.style.display = 'grid';
+                } else if (tipo === 'usuarios' && card.dataset.type === 'usuario') {
+                    card.style.display = 'grid';
+                } else if (tipo === 'eventos' && card.dataset.type === 'evento') {
+                    card.style.display = 'grid';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function solicitarMaisInfo(id) {
+            showNotification('Solicitação de informações enviada!', 'info');
+        }
+
+        function visualizarDocumento(docId) {
+            showNotification('Abrindo documento...', 'info');
+        }
+
+        function aprovarUsuario(id, nome) {
+            if (confirm(`Aprovar o usuário ${nome}?`)) {
+                showNotification(`Usuário ${nome} aprovado com sucesso!`, 'success');
+                const card = document.querySelector(`[data-id="${id}"]`);
+                if (card) {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.remove(), 300);
+                }
+            }
+        }
+
+        function rejeitarUsuario(id, nome) {
+            const motivo = prompt(`Por que deseja rejeitar ${nome}?`);
+            if (motivo) {
+                showNotification(`Usuário ${nome} rejeitado`, 'error');
+                const card = document.querySelector(`[data-id="${id}"]`);
+                if (card) {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.remove(), 300);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

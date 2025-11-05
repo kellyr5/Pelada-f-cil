@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Gestão de Usuários</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar usuários...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filtrarUsuarios('todos')">
+                    <i class="fas fa-list"></i> Todos (1.243)
+                </button>
+                <button class="filter-tab" onclick="filtrarUsuarios('jogadores')">
+                    <i class="fas fa-running"></i> Jogadores (987)
+                </button>
+                <button class="filter-tab" onclick="filtrarUsuarios('donos')">
+                    <i class="fas fa-building"></i> Donos de Quadra (142)
+                </button>
+                <button class="filter-tab" onclick="filtrarUsuarios('organizadores')">
+                    <i class="fas fa-users-cog"></i> Organizadores (114)
+                </button>
+                <button class="filter-tab" onclick="filtrarUsuarios('bloqueados')">
+                    <i class="fas fa-ban"></i> Bloqueados (8)
+                </button>
+            </div>
+
+            <!-- Users Grid -->
+            <div class="users-grid">
+                <!-- User 1 -->
+                <div class="user-card" data-tipo="jogador">
+                    <img src="https://i.pravatar.cc/300?img=12" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem;">
+                    <div class="user-card__info">
+                        <h4>Carlos Mendes</h4>
+                        <p><i class="fas fa-envelope"></i> carlos.mendes@email.com</p>
+                        <span class="badge badge--success"><i class="fas fa-running"></i> Jogador</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-gamepad"></i> 45 partidas</span>
+                        <span><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0.5rem 0;">
+                        <i class="fas fa-clock"></i> Ativo há 2 horas
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-1')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="enviarMensagem('user-1')">
+                            <i class="fas fa-envelope"></i> Mensagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User 2 -->
+                <div class="user-card" data-tipo="dono">
+                    <img src="https://i.pravatar.cc/300?img=33" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem;">
+                    <div class="user-card__info">
+                        <h4>Ana Paula Costa</h4>
+                        <p><i class="fas fa-envelope"></i> ana.costa@email.com</p>
+                        <span class="badge badge--info"><i class="fas fa-building"></i> Dona de Quadra</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-building"></i> 3 quadras</span>
+                        <span><i class="fas fa-star"></i> 4.9</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0.5rem 0;">
+                        <i class="fas fa-clock"></i> Ativo há 1 dia
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-2')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="enviarMensagem('user-2')">
+                            <i class="fas fa-envelope"></i> Mensagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User 3 -->
+                <div class="user-card" data-tipo="organizador">
+                    <img src="https://i.pravatar.cc/300?img=15" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem;">
+                    <div class="user-card__info">
+                        <h4>Roberto Silva</h4>
+                        <p><i class="fas fa-envelope"></i> roberto.silva@email.com</p>
+                        <span class="badge badge--warning"><i class="fas fa-users-cog"></i> Organizador</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-calendar"></i> 28 eventos</span>
+                        <span><i class="fas fa-star"></i> 5.0</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0.5rem 0;">
+                        <i class="fas fa-clock"></i> Ativo há 30 min
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-3')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="enviarMensagem('user-3')">
+                            <i class="fas fa-envelope"></i> Mensagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User 4 -->
+                <div class="user-card" data-tipo="jogador">
+                    <img src="https://i.pravatar.cc/300?img=27" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem;">
+                    <div class="user-card__info">
+                        <h4>Mariana Santos</h4>
+                        <p><i class="fas fa-envelope"></i> mariana.santos@email.com</p>
+                        <span class="badge badge--success"><i class="fas fa-running"></i> Jogadora</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-gamepad"></i> 67 partidas</span>
+                        <span><i class="fas fa-star"></i> 4.7</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0.5rem 0;">
+                        <i class="fas fa-clock"></i> Online agora
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-4')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="enviarMensagem('user-4')">
+                            <i class="fas fa-envelope"></i> Mensagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User 5 -->
+                <div class="user-card" data-tipo="dono">
+                    <img src="https://i.pravatar.cc/300?img=58" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem;">
+                    <div class="user-card__info">
+                        <h4>Pedro Oliveira</h4>
+                        <p><i class="fas fa-envelope"></i> pedro.oliveira@email.com</p>
+                        <span class="badge badge--info"><i class="fas fa-building"></i> Dono de Quadra</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-building"></i> 5 quadras</span>
+                        <span><i class="fas fa-star"></i> 4.6</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0.5rem 0;">
+                        <i class="fas fa-clock"></i> Ativo há 3 horas
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-5')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="enviarMensagem('user-5')">
+                            <i class="fas fa-envelope"></i> Mensagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User 6 - Bloqueado -->
+                <div class="user-card" data-tipo="bloqueado" style="opacity: 0.6; border: 2px solid var(--accent-red);">
+                    <img src="https://i.pravatar.cc/300?img=41" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem; filter: grayscale(100%);">
+                    <div class="user-card__info">
+                        <h4>Lucas Ferreira</h4>
+                        <p><i class="fas fa-envelope"></i> lucas.ferreira@email.com</p>
+                        <span class="badge badge--danger"><i class="fas fa-ban"></i> Bloqueado</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-gamepad"></i> 12 partidas</span>
+                        <span><i class="fas fa-star"></i> 2.1</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--accent-red); margin: 0.5rem 0;">
+                        <i class="fas fa-exclamation-triangle"></i> Bloqueado por violação
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-6')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="desbloquearUsuario('user-6')">
+                            <i class="fas fa-unlock"></i> Desbloquear
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User 7 -->
+                <div class="user-card" data-tipo="organizador">
+                    <img src="https://i.pravatar.cc/300?img=22" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem;">
+                    <div class="user-card__info">
+                        <h4>Juliana Alves</h4>
+                        <p><i class="fas fa-envelope"></i> juliana.alves@email.com</p>
+                        <span class="badge badge--warning"><i class="fas fa-users-cog"></i> Organizadora</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-calendar"></i> 42 eventos</span>
+                        <span><i class="fas fa-star"></i> 4.9</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0.5rem 0;">
+                        <i class="fas fa-clock"></i> Ativo há 5 min
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-7')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="enviarMensagem('user-7')">
+                            <i class="fas fa-envelope"></i> Mensagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User 8 -->
+                <div class="user-card" data-tipo="jogador">
+                    <img src="https://i.pravatar.cc/300?img=68" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; margin-bottom: 1rem;">
+                    <div class="user-card__info">
+                        <h4>Felipe Rodrigues</h4>
+                        <p><i class="fas fa-envelope"></i> felipe.rodrigues@email.com</p>
+                        <span class="badge badge--success"><i class="fas fa-running"></i> Jogador</span>
+                    </div>
+                    <div class="user-card__stats">
+                        <span><i class="fas fa-gamepad"></i> 156 partidas</span>
+                        <span><i class="fas fa-star"></i> 4.9</span>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--light-grey); margin: 0.5rem 0;">
+                        <i class="fas fa-clock"></i> Ativo há 15 min
+                    </p>
+                    <div class="user-card__actions">
+                        <button class="btn btn--sm btn--secondary" onclick="verPerfil('user-8')">
+                            <i class="fas fa-eye"></i> Perfil
+                        </button>
+                        <button class="btn btn--sm btn--success" onclick="enviarMensagem('user-8')">
+                            <i class="fas fa-envelope"></i> Mensagem
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function filtrarUsuarios(tipo) {
+            const cards = document.querySelectorAll('.user-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+
+            cards.forEach(card => {
+                if (tipo === 'todos') {
+                    card.style.display = 'flex';
+                } else if (tipo === 'jogadores' && card.dataset.tipo === 'jogador') {
+                    card.style.display = 'flex';
+                } else if (tipo === 'donos' && card.dataset.tipo === 'dono') {
+                    card.style.display = 'flex';
+                } else if (tipo === 'organizadores' && card.dataset.tipo === 'organizador') {
+                    card.style.display = 'flex';
+                } else if (tipo === 'bloqueados' && card.dataset.tipo === 'bloqueado') {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function verPerfil(id) {
+            showNotification('Abrindo perfil do usuário...', 'info');
+        }
+
+        function enviarMensagem(id) {
+            showNotification('Abrindo chat com usuário...', 'info');
+        }
+
+        function editarPermissoes(id) {
+            showNotification('Gerenciando permissões...', 'info');
+        }
+
+        function bloquearUsuario(id) {
+            if (confirm('Deseja bloquear este usuário?')) {
+                showNotification('Usuário bloqueado com sucesso!', 'success');
+            }
+        }
+
+        function desbloquearUsuario(id) {
+            if (confirm('Deseja desbloquear este usuário?')) {
+                showNotification('Usuário desbloqueado com sucesso!', 'success');
+            }
+        }
+    </script>
+</body>
+</html>

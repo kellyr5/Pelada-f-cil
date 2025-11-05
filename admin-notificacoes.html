@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações - Admin Pelada Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <span class="logo-icon"><i class="fas fa-futbol"></i></span>
+                <span class="logo-text">Pelada <span class="logo-accent">Fácil</span></span>
+            </div>
+            <div class="sidebar__badge sidebar__badge--admin">Super Admin <i class="fas fa-crown"></i></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <a href="dashboard-admin.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-home"></i></span>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-aprovacoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-check-circle"></i></span>
+                <span>Aprovações</span>
+                <span class="sidebar__badge-small" data-type="aprovacoes">12</span>
+            </a>
+            <a href="admin-quadras.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-building"></i></span>
+                <span>Quadras</span>
+            </a>
+            <a href="admin-usuarios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-users"></i></span>
+                <span>Usuários</span>
+            </a>
+            <a href="admin-partidas.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-gamepad"></i></span>
+                <span>Partidas</span>
+            </a>
+            <a href="admin-financeiro.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-dollar-sign"></i></span>
+                <span>Financeiro</span>
+            </a>
+            <a href="admin-relatorios.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-chart-line"></i></span>
+                <span>Relatórios</span>
+            </a>
+            <a href="admin-denuncias.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-exclamation-triangle"></i></span>
+                <span>Denúncias</span>
+                <span class="sidebar__badge-small">3</span>
+            </a>
+            <a href="admin-notificacoes.html" class="sidebar__link active">
+                <span class="sidebar__icon"><i class="fas fa-bell"></i></span>
+                <span>Notificações</span>
+            </a>
+            <a href="admin-configuracoes.html" class="sidebar__link">
+                <span class="sidebar__icon"><i class="fas fa-cog"></i></span>
+                <span>Configurações</span>
+            </a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <div class="sidebar__user">
+                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="user-info">
+                    <div class="user-name">Admin Master</div>
+                    <div class="user-rating">Acesso Total</div>
+                </div>
+            </div>
+            <a href="index.html" class="sidebar__link sidebar__link--logout">
+                <span class="sidebar__icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar__left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1 class="topbar__title">Central de Notificações</h1>
+            </div>
+            <div class="topbar__right">
+                <div class="topbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar notificações...">
+                </div>
+                <button class="topbar__btn">
+                    <span class="topbar__icon"><i class="fas fa-bell"></i></span>
+                    <span class="topbar__badge">15</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                <button class="btn btn--success" onclick="marcarTodasLidas()">
+                    <i class="fas fa-check-double"></i> Marcar Todas como Lidas
+                </button>
+                <button class="btn btn--danger" onclick="limparNotificacoes()">
+                    <i class="fas fa-trash"></i> Limpar Lidas
+                </button>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filtrarNotificacoes('todas')">
+                    <i class="fas fa-list"></i> Todas (47)
+                </button>
+                <button class="filter-tab" onclick="filtrarNotificacoes('nao-lidas')">
+                    <i class="fas fa-envelope"></i> Não Lidas (15)
+                </button>
+                <button class="filter-tab" onclick="filtrarNotificacoes('sistema')">
+                    <i class="fas fa-server"></i> Sistema (12)
+                </button>
+                <button class="filter-tab" onclick="filtrarNotificacoes('usuarios')">
+                    <i class="fas fa-users"></i> Usuários (18)
+                </button>
+                <button class="filter-tab" onclick="filtrarNotificacoes('financeiro')">
+                    <i class="fas fa-dollar-sign"></i> Financeiro (10)
+                </button>
+                <button class="filter-tab" onclick="filtrarNotificacoes('denuncias')">
+                    <i class="fas fa-flag"></i> Denúncias (7)
+                </button>
+            </div>
+
+            <!-- Notifications List -->
+            <div class="activity-list">
+                <!-- Notification 1 - Unread System -->
+                <div class="activity-item" data-tipo="sistema" data-lida="false" style="background: rgba(0, 200, 83, 0.05); border-left: 4px solid var(--primary-green);">
+                    <div class="activity-icon activity-icon--success">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--primary-green);"></i>
+                            Atualização do Sistema Concluída
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Sistema foi atualizado para a versão 2.5.0 com melhorias de performance e correções de bugs.
+                        </p>
+                        <span class="activity-time">Há 30 minutos</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="marcarComoLida('notif-1')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-1')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 2 - Unread User -->
+                <div class="activity-item" data-tipo="usuario" data-lida="false" style="background: rgba(0, 200, 83, 0.05); border-left: 4px solid var(--accent-blue);">
+                    <div class="activity-icon activity-icon--info">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--primary-green);"></i>
+                            Novo Usuário Cadastrado
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            <strong>Fernanda Lima</strong> se cadastrou como Organizadora de Eventos. Aguardando aprovação.
+                        </p>
+                        <span class="activity-time">Há 1 hora</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="marcarComoLida('notif-2')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-2')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 3 - Unread Financial -->
+                <div class="activity-item" data-tipo="financeiro" data-lida="false" style="background: rgba(0, 200, 83, 0.05); border-left: 4px solid var(--accent-orange);">
+                    <div class="activity-icon activity-icon--warning">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--primary-green);"></i>
+                            Nova Transação Pendente
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Pagamento de <strong>R$ 180,00</strong> aguardando confirmação. ID: #TRX-1848
+                        </p>
+                        <span class="activity-time">Há 2 horas</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="marcarComoLida('notif-3')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-3')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 4 - Unread Report -->
+                <div class="activity-item" data-tipo="denuncia" data-lida="false" style="background: rgba(0, 200, 83, 0.05); border-left: 4px solid var(--accent-red);">
+                    <div class="activity-icon" style="background: rgba(255, 23, 68, 0.2);">
+                        <i class="fas fa-flag" style="color: var(--accent-red);"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--primary-green);"></i>
+                            Nova Denúncia Recebida
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Denúncia de comportamento inadequado. Prioridade: <strong style="color: var(--accent-red);">ALTA</strong>
+                        </p>
+                        <span class="activity-time">Há 3 horas</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="marcarComoLida('notif-4')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-4')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 5 - Read -->
+                <div class="activity-item" data-tipo="usuario" data-lida="true" style="opacity: 0.7;">
+                    <div class="activity-icon activity-icon--info">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            Nova Quadra Aprovada
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            <strong>Arena Super Star</strong> foi aprovada e está ativa na plataforma.
+                        </p>
+                        <span class="activity-time">Há 5 horas</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-5')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 6 - Unread User -->
+                <div class="activity-item" data-tipo="usuario" data-lida="false" style="background: rgba(0, 200, 83, 0.05); border-left: 4px solid var(--accent-blue);">
+                    <div class="activity-icon activity-icon--info">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--primary-green);"></i>
+                            Nova Avaliação Recebida
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            <strong>Carlos Mendes</strong> avaliou <strong>Arena Champions League</strong> com 5 estrelas.
+                        </p>
+                        <span class="activity-time">Há 6 horas</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="marcarComoLida('notif-6')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-6')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 7 - Read Financial -->
+                <div class="activity-item" data-tipo="financeiro" data-lida="true" style="opacity: 0.7;">
+                    <div class="activity-icon activity-icon--success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            Transação Confirmada
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Pagamento de <strong>R$ 150,00</strong> confirmado. ID: #TRX-1847
+                        </p>
+                        <span class="activity-time">Há 8 horas</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-7')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 8 - Read System -->
+                <div class="activity-item" data-tipo="sistema" data-lida="true" style="opacity: 0.7;">
+                    <div class="activity-icon activity-icon--warning">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            Backup Automático Concluído
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Backup diário do banco de dados realizado com sucesso às 03:00.
+                        </p>
+                        <span class="activity-time">Há 10 horas</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-8')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 9 - Unread User -->
+                <div class="activity-item" data-tipo="usuario" data-lida="false" style="background: rgba(0, 200, 83, 0.05); border-left: 4px solid var(--accent-blue);">
+                    <div class="activity-icon activity-icon--info">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--primary-green);"></i>
+                            Nova Partida Criada
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            <strong>Roberto Silva</strong> criou a partida "Pelada dos Amigos" para 15/12/2024.
+                        </p>
+                        <span class="activity-time">Há 12 horas</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="marcarComoLida('notif-9')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-9')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 10 - Read Report -->
+                <div class="activity-item" data-tipo="denuncia" data-lida="true" style="opacity: 0.7;">
+                    <div class="activity-icon activity-icon--success">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            Denúncia Resolvida
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Denúncia #REP-543 foi resolvida com sucesso. Usuário advertido.
+                        </p>
+                        <span class="activity-time">Há 1 dia</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-10')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 11 - Read Financial -->
+                <div class="activity-item" data-tipo="financeiro" data-lida="true" style="opacity: 0.7;">
+                    <div class="activity-icon activity-icon--warning">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            Relatório Financeiro Gerado
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Relatório mensal de dezembro está disponível para download.
+                        </p>
+                        <span class="activity-time">Há 1 dia</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-11')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification 12 - Read System -->
+                <div class="activity-item" data-tipo="sistema" data-lida="true" style="opacity: 0.7;">
+                    <div class="activity-icon activity-icon--info">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <p style="font-weight: 600; margin-bottom: 0.25rem;">
+                            Manutenção Programada
+                        </p>
+                        <p style="font-size: 0.875rem; margin-bottom: 0;">
+                            Manutenção do sistema agendada para 20/12/2024 às 02:00. Duração estimada: 2 horas.
+                        </p>
+                        <span class="activity-time">Há 2 dias</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-icon" onclick="excluirNotificacao('notif-12')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/funcionalidades.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        function filtrarNotificacoes(tipo) {
+            const items = document.querySelectorAll('.activity-item');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+
+            items.forEach(item => {
+                if (tipo === 'todas') {
+                    item.style.display = 'flex';
+                } else if (tipo === 'nao-lidas' && item.dataset.lida === 'false') {
+                    item.style.display = 'flex';
+                } else if (item.dataset.tipo === tipo) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function marcarComoLida(id) {
+            showNotification('Notificação marcada como lida!', 'success');
+            const notif = document.querySelector(`[onclick*="${id}"]`).closest('.activity-item');
+            notif.dataset.lida = 'true';
+            notif.style.opacity = '0.7';
+            notif.style.background = '';
+            notif.style.borderLeft = '';
+        }
+
+        function excluirNotificacao(id) {
+            if (confirm('Deseja excluir esta notificação?')) {
+                const notif = document.querySelector(`[onclick*="${id}"]`).closest('.activity-item');
+                notif.style.opacity = '0';
+                setTimeout(() => notif.remove(), 300);
+                showNotification('Notificação excluída!', 'success');
+            }
+        }
+
+        function marcarTodasLidas() {
+            if (confirm('Marcar todas as notificações como lidas?')) {
+                document.querySelectorAll('.activity-item[data-lida="false"]').forEach(item => {
+                    item.dataset.lida = 'true';
+                    item.style.opacity = '0.7';
+                    item.style.background = '';
+                    item.style.borderLeft = '';
+                });
+                showNotification('Todas as notificações foram marcadas como lidas!', 'success');
+            }
+        }
+
+        function limparNotificacoes() {
+            if (confirm('Deseja excluir todas as notificações lidas?')) {
+                document.querySelectorAll('.activity-item[data-lida="true"]').forEach(item => {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.remove(), 300);
+                });
+                showNotification('Notificações lidas foram removidas!', 'success');
+            }
+        }
+    </script>
+</body>
+</html>
